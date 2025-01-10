@@ -1,23 +1,28 @@
 import javafx.application.Platform;
-import javafx.scene.paint.Color;
 
 public class Game 
 {
-
-
     private final int numberOfBlocks = 10;
     private final Block[] blocks;
     private final Platform platform;
     private final Ball ball;
     private boolean gameOver;
-    public static final int width = 600;
+    public static final int width = 800;
     public static final int height = 600;
 
-    public Game()
-    {
+    public Game() {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
+        
+        GameSetup gameSetup = new GameSetup();
+        gameSetup.drawStartGame();
+
         this.gameOver = false;
-        this.blocks = new Block[numberOfBlocks];
+        this.blocks = gameSetup.getBlocks();
+
+        System.out.println(this.blocks.length);
+        
+        /* 
+        new Block[numberOfBlocks];
         for (int i = 0; i < 5; i++) {
             this.blocks[i] = new Block(50, 20, 100 + i * 100, 500, new Color(120, 120, 120));
         }
@@ -25,9 +30,16 @@ public class Game
         for (int i = 0; i < 5; i++) {
             this.blocks[5 + i] = new Block(50, 20, 100 + i * 100, 550, new Color(120, 120, 120));
         }
+        */
 
-        this.platform = new Platform(100, 10, 300, 100, new Color(120, 120, 120));
-        this.ball = new Ball(5, 300, 300, new Color(120, 120, 120), 0, -2);
+
+        this.platform = gameSetup.getPlatform();
+
+        //new Platform(100, 10, 300, 100, new Color(120, 120, 120));
+
+        this.ball = gameSetup.getBall();
+        
+        //new Ball(5, 300, 300, new Color(120, 120, 120), 0, -2);
 
         // Set canvas size and x and y scales.
         StdDraw.setCanvasSize(this.width, this.height);
@@ -35,10 +47,8 @@ public class Game
         StdDraw.setYscale(0, this.height);
 
         gameLoop();
-        }
     }
 
-    
     private void gameLoop() {
 
         // Check if the user has pressed a or d and move the platform accordingly.
@@ -104,5 +114,8 @@ public class Game
             gameLoop();
         }
     }
+    
+
+    
     
 }

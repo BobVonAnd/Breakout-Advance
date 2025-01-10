@@ -18,12 +18,11 @@ public class Main extends Application
 {
 
 
-
+    private Setup setup = new Setup();
     private GameSetup gameSetup = new GameSetup();
 
     public static void main(String[] args)
     {
-        System.setProperty("glass.disableDpiScaling", "true");
         launch(args);
     }
 
@@ -41,6 +40,8 @@ public class Main extends Application
         primaryStage.setTitle("Breakout");
 
         Pane test = new Pane();
+
+        Pane startPage = new Pane();
 
         VBox vBox = new VBox();
 
