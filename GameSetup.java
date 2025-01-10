@@ -48,9 +48,9 @@ public class GameSetup
 
     private void drawWalls()
     {  
-        wall[0] = new Wall(400, 300, 200, 200);
-        wall[1] = new Wall(700, 350, 5, 200);
-        wall[2] = new Wall(200, 545, 300, 5);
+        wall[0] = new Wall(100, 60, 5, 540);
+        wall[1] = new Wall(700, 60, 5, 540);
+        wall[2] = new Wall(100, 60, 600, 5);
 
         for(int i = 0; i < wall.length; i++)
         {
@@ -72,7 +72,7 @@ public class GameSetup
 
     private void drawBall()
     {
-        ball = new Ball(400, 250, 5, 5, 6);
+        ball = new Ball(400, 400, 5, 5, 4);
         ball.drawBall();
     }
 
