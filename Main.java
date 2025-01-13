@@ -1,79 +1,43 @@
 import javafx.application.Application;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.shape.*;
-import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;;
 
-
-public class Main extends Application 
+public class Main extends Application //implements EventHandler<ActionEvent>
 {
-
-
+    private static Stage firstStage;
+    
+    private Option option = new Option(); 
     private Setup setup = new Setup();
-    private GameSetup gameSetup = new GameSetup();
+
+    private Scene scene;
+  
+    //The first Pane
+    private Pane startPage;
 
     public static void main(String[] args)
     {
         launch(args);
     }
 
-
-
     @Override
     public void start(Stage primaryStage)
     {
-        //VBox.setVgrow(vboxGrey, Priority.ALWAYS);
-        //HBox.setHgrow(vboxGrey, Priority.ALWAYS);
+        //gets primaryStage
+        firstStage = primaryStage;   
         
-
-        gameSetup.drawStartGame();
-
+        //inisiates the first stage
         primaryStage.setTitle("Breakout");
-
-        Pane test = new Pane();
-
-        Pane startPage = new Pane();
-
-        VBox vBox = new VBox();
-
-        HBox hBox = new HBox();
-        
-        
-        //block.getR().intersects(root.getBoundsInLocal());
-
-        //delta time fix collider
-
-
-        for(int i = 0; i < gameSetup.getWalls().length; i++)
-        {
-            test.getChildren().add(gameSetup.getWalls()[i].getWall());
-        }
-        test.getChildren().add(gameSetup.getBall().getCircle());
-        
-          
-
-
-
-        Scene scene = new Scene(test, 800, 600);
-        // primaryStage.setRenderScaleX(1.0);
-        // primaryStage.setRenderScaleY(1.0);
+        setup.chooseModePage();
+        startPage = setup.getPane();
+        scene = new Scene(startPage, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
-        
     }
 
-
-    private void show()
+    public Stage getPrimaryStage()
     {
-        
+        return firstStage;
     }
+
 }

@@ -1,7 +1,17 @@
 import javafx.application.Platform;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+
 
 public class GameSetup 
 {
+   
     private int width = 30;
     private int height = 7;
     private int[] pos = new int[] {152, 500};
@@ -15,22 +25,46 @@ public class GameSetup
     private Ball ball;
     private Wall[] wall = new Wall[3];
 
+    private Pane easyPane = new Pane();
+    private Pane mediumPane = new Pane();
+    private Pane hardPane = new Pane();
 
+    public Pane makeEasyPane()
+    {
+        for(int i = 0; i < ySize; i++)
+        {
+            for(int j = 0; j < xSize; j++)
+            {
+                nrOfTargets[j][i] = new Block(pos[0] + j * 62 , pos[1] - i * 35 , width , height);
+                easyPane.getChildren().addAll(nrOfTargets[j][i].getR());
+            }
+        }
+
+        return easyPane;
+    }
+
+    public Pane makeMediumPane()
+    {
+        Label k = new Label("jj");
+        mediumPane.getChildren().addAll(k);
+
+        return mediumPane;
+    }
     
+    public Pane makeHardPane()
+    {
+        Label k = new Label("jj");
+        
+        hardPane.getChildren().addAll(k);
+
+        return hardPane;
+    }
 
     public void drawStartGame()
     {
-        drawBackgound();
         drawBlocks();
         drawWalls();
-        //drawPlatform();
         drawBall();
-    }
-
-    private void drawBackgound()
-    {
-        //StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        //StdDraw.filledRectangle(400, 300, 400, 300);
     }
 
     private void drawBlocks()
@@ -97,6 +131,8 @@ public class GameSetup
     {
         return ball;
     }
+
+    
     
 
 
