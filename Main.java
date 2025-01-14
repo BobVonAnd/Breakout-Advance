@@ -30,7 +30,7 @@ public class Main extends Application //implements EventHandler<ActionEvent>
         primaryStage.setTitle("Breakout");
         setup.chooseModePage();
         startPage = setup.getPane();
-        scene = new Scene(startPage, 800, 600);
+        scene = new Scene(startPage, 600, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -1,9 +1,11 @@
+import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 public class Block 
 {
     private int[] pos;
     private int width, height;
     private Rectangle r;
+    private Color color;
 
     
     public Block(int x, int y, int w, int h) 
@@ -11,6 +13,16 @@ public class Block
         pos = new int[] {x, y};
         width = w;
         height = h;
+        this.color = Color.BLACK;
+        drawBlock();
+    }
+
+    public Block(int x, int y, int w, int h, Color color) 
+    {
+        pos = new int[] {x, y};
+        width = w;
+        height = h;
+        this.color = color;
         drawBlock();
     }
 

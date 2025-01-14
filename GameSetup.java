@@ -2,6 +2,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -9,15 +10,16 @@ import javafx.stage.Stage;
 
 
 
+
 public class GameSetup 
 {
    
-    private int width = 30;
-    private int height = 7;
-    private int[] pos = new int[] {152, 500};
+    private int width = 59;
+    private int height = 25;
+    private int[] pos = new int[] {0, 150};
 
-    private int xSize = 9;
-    private int ySize = 4; 
+    private int xSize = 10;
+    private int ySize = 3; 
 
     //objects
     private Block[][] nrOfTargets = new Block[xSize][ySize];
@@ -29,16 +31,26 @@ public class GameSetup
     private Pane mediumPane = new Pane();
     private Pane hardPane = new Pane();
 
+    
+
     public Pane makeEasyPane()
     {
+        //Blocks__________________________________
         for(int i = 0; i < ySize; i++)
         {
             for(int j = 0; j < xSize; j++)
             {
-                nrOfTargets[j][i] = new Block(pos[0] + j * 62 , pos[1] - i * 35 , width , height);
-                easyPane.getChildren().addAll(nrOfTargets[j][i].getR());
+                nrOfTargets[j][i] = new Block(pos[0] + j * 60 , pos[1] - i * 35 , width , height);
+                easyPane.getChildren().add(nrOfTargets[j][i].getR());
             }
         }
+        //Platform____________________________________________
+        Block platform = new Block(250, 450, 100, 10);
+
+        //Ball________________________________________________
+        Ball ball = new Ball(297, 445, 2, 2, 6);
+        easyPane.getChildren().addAll(platform.getR(), ball.getCircle());
+
 
         return easyPane;
     }

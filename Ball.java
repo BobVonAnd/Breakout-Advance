@@ -1,5 +1,4 @@
 import javafx.scene.shape.Circle;
-import javafx.scene.Node;
 
 public class Ball 
 {
@@ -14,6 +13,7 @@ public class Ball
         pos = new int[] {x, y};
         vel = new int[] {vx, vy};
         radius = r;
+        drawBall();
     }
 
     public void drawBall()
