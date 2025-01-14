@@ -34,44 +34,87 @@ public class GameSetup
     private Pane mediumPane = new Pane();
     private Pane hardPane = new Pane();
 
+    private int multiplayerX = 605;
+    private int notSelected = 0;
+
+
+    //Easy gamemode_______________________________________________________________________________
+    
     public Pane makeEasyPane(boolean multiplayerSelected)
+    {
+        drawEasy(notSelected);
+
+        if(multiplayerSelected)
+        {
+            drawEasy(multiplayerX);
+        }
+
+        return easyPane;
+    }
+
+    private void drawEasy(int x)
     {
         for(int i = 0; i < ySize; i++)
         {
             for(int j = 0; j < xSize; j++)
             {
-                nrOfTargets[j][i] = new Block(pos[0] + j * 60 , pos[1] - i * 35 , width , height);
+                nrOfTargets[j][i] = new Block(pos[0] + j * 60 + x, pos[1] - i * 35 , width , height);
                 easyPane.getChildren().add(nrOfTargets[j][i].getR());
             }
         }
         //Platform____________________________________________
-        Block platform = new Block(250, 450, 100, 10);
+        Block platform = new Block(250 + x, 450, 100, 10);
 
         //Ball________________________________________________
-        Ball ball = new Ball(297, 445, 2, 2, 6);
+        Ball ball = new Ball(297 + x, 445, 2, 2, 6);
         easyPane.getChildren().addAll(platform.getR(), ball.getCircle());
-
-
-        return easyPane;
     }
+
+
+    //Medium gamemode_______________________________________________________________________
+    
 
     public Pane makeMediumPane(boolean multiplayerSelected)
     {
-        Label k = new Label("jj");
-        mediumPane.getChildren().addAll(k);
+        drawMedium(notSelected);
+
+       if(multiplayerSelected)
+       {
+            drawMedium(multiplayerX);
+       }
 
         return mediumPane;
     }
-    
-    public Pane makeHardPane(boolean multiplayerSelected)
+
+    private void drawMedium(int x)
     {
         Label k = new Label("jj");
-        
-        hardPane.getChildren().addAll(k);
+        mediumPane.getChildren().addAll(k);
+    }
+    
+
+    //Hard gamemode__________________________________________________________________________
+    public Pane makeHardPane(boolean multiplayerSelected)
+    {
+        drawHard(notSelected);
+
+        if(multiplayerSelected)
+        {
+            drawHard(multiplayerX);
+        }
 
         return hardPane;
     }
 
+    private void drawHard(int x)
+    {
+        Label k = new Label("jj");
+        
+        hardPane.getChildren().addAll(k);
+    }
+
+
+    /* 
     public void drawStartGame()
     {
         drawBlocks();
@@ -114,14 +157,14 @@ public class GameSetup
         //x, y, w, h, speed
         platform = new Platform(400, 150, 50, 5, 5);
     }
-    */
+    
 
     private void drawBall()
     {
         ball = new Ball(400, 400, 5, 5, 4);
         ball.drawBall();
     }
-
+    */
     public Block[][] getBlocks()
     {
         return nrOfTargets;
