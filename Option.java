@@ -1,14 +1,14 @@
 import java.util.Arrays;
 
-
 public class Option 
 {
-    
+    //indicates what mode[] is selected
     private static int whatMode = 0;
 
     //Easy, Medium, Hard, Costem.
     private static Boolean[] mode = new Boolean[] {true, false, false};
 
+    //chances value of mode[] and returns it
     public Boolean[] chanceMode(int arrowHit)
     {
         mode[whatMode] = false;
@@ -22,12 +22,11 @@ public class Option
         {
             whatMode = 0;
         }
-        System.out.println(whatMode);
         mode[whatMode] = true;
-        System.out.println(Arrays.toString(mode));
         return mode;
     }
 
+    //checks what mode[] is true and returns it as an int.
     public int modeSelected()
     {
         int sendBool = 0;
@@ -37,7 +36,6 @@ public class Option
         {
             if(mode[i])
             {
-                System.out.println(i + "  " + mode[i]);
                 sendBool = i;
             }
         }

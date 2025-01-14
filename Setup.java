@@ -16,18 +16,21 @@ import javafx.event.ActionEvent;
 
 public class Setup 
 {
-
+    //classes
     private Option option = new Option();
     private GameSetup gameSetup = new GameSetup();
 
+    //labels
     private Label easyLabel;
     private Label mediumLabel;
     private Label hardLabel;
 
+    //fonts
     private Font labelFont = Font.font("Anton", FontWeight.BOLD, FontPosture.REGULAR, 40);
     private Font buttonFont = Font.font("Anton", FontWeight.BOLD, FontPosture.REGULAR, 20);
     private Font checkBoxFont = Font.font("Anton", FontWeight.BOLD, FontPosture.REGULAR, 15);
 
+    //buttons
     private Button leftButton;
     private Button rightButton;
     private Button playButton;
@@ -37,12 +40,14 @@ public class Setup
     
     private Scene gameScene;
 
+    
     private static boolean multiplayerSelected = false;
 
     
 
     public void chooseModePage()
     {
+        //creates all the nodes in the scene
         leftButton = new Button("<-");
         rightButton = new Button("->");
         playButton = new Button("PLAY");
@@ -59,6 +64,8 @@ public class Setup
         playButton.setLayoutX(250);
         playButton.setLayoutY(330);
         playButton.setFont(buttonFont);
+
+        //makes anonymous class
         playButton.setOnAction(new EventHandler<ActionEvent>() {
             
             private Setup setup = new Setup();
@@ -68,6 +75,7 @@ public class Setup
             @Override
             public void handle(ActionEvent actionEvent)
             {
+                //gets mode[], Stage and boolean mutiplayer
                 setup.swichScene(option.modeSelected(), main.getPrimaryStage(), setup.getMultiplayerSelected());
             }
             
@@ -78,11 +86,13 @@ public class Setup
         leftButton.setPrefSize(70, 40);
         leftButton.setLayoutX(30);
         leftButton.setLayoutY(260);
+        //makes anonymous class
         leftButton.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent actionEvent)
             {
+                //updates mode[]
                 update(option.chanceMode(-1));
             }
             
@@ -92,16 +102,18 @@ public class Setup
         rightButton.setPrefSize(70, 40);
         rightButton.setLayoutX(500);
         rightButton.setLayoutY(260);
+        //makes anonymous class
         rightButton.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent actionEvent)
             {
+                //updates mode[]
                 update(option.chanceMode(1));
             }
             
         });
-        //Label_____________________________________________________________________
+        //Labels_____________________________________________________________________
         easyLabel.setWrapText(true);
         easyLabel.setLayoutX(260);
         easyLabel.setLayoutY(150);
@@ -125,26 +137,29 @@ public class Setup
         multiplayer.setLayoutX(370);
         multiplayer.setLayoutY(330);
         multiplayer.setFont(checkBoxFont);
+        //makes anonymous class
         multiplayer.setOnAction(new EventHandler<ActionEvent>() {
             
             private Setup setup = new Setup();
+
             @Override
             public void handle(ActionEvent actionEvent)
             {
-                System.out.println(multiplayer.isSelected()); 
+                //sets the muliplayer to true or false, when selected
                 setup.setMultiplayerSelected(multiplayer.isSelected());
             }
             
         });
         //________________________________
         
+        //adds all nodes to scene
         startPane.getChildren().addAll(leftButton,rightButton,playButton,
         easyLabel, mediumLabel, hardLabel,multiplayer);
     }
 
-
     public void update(Boolean[] modes)
     {
+        //swiches the visability of the labels
         easyLabel.setVisible(modes[0]);
         mediumLabel.setVisible(modes[1]);
         hardLabel.setVisible(modes[2]);
@@ -155,39 +170,44 @@ public class Setup
         return startPane;
     }
 
+    //swiches scens with GameSetup
     public void swichScene(int whatScene, Stage primaryStage, boolean multiplayer)
     {
         int gameSceneWidth = 600;
         int gameSceneHeight = 600;
-        System.out.println(multiplayer);
+
+        //makes games width twich as big + 5 pixes
         if(multiplayer)
         {
             gameSceneWidth = gameSceneWidth * 2 + 5;
         }
 
-        System.out.println(whatScene);
+        //dicides what mode[] was selected and gets the scene from that mode
         switch (whatScene) {
             case 0:
-                gameScene = new Scene(gameSetup.makeEasyPane(),gameSceneWidth,gameSceneHeight);
+                gameScene = new Scene(gameSetup.makeEasyPane(multiplayer),gameSceneWidth,gameSceneHeight);
                 break;
             case 1:
-                gameScene = new Scene(gameSetup.makeMediumPane(),gameSceneWidth,gameSceneHeight);
+                gameScene = new Scene(gameSetup.makeMediumPane(multiplayer),gameSceneWidth,gameSceneHeight);
                 break;
             case 2:
-                gameScene = new Scene(gameSetup.makeHardPane(),gameSceneHeight,gameSceneWidth);
+                gameScene = new Scene(gameSetup.makeHardPane(multiplayer),gameSceneHeight,gameSceneWidth);
                 break;
             default:
                 break;
         }
        
+        //swithes scenes
         primaryStage.setScene(gameScene);
     }
 
+    //swiches between true or false when checkbox is clicked
     public void setMultiplayerSelected(boolean clicked)
     {
         multiplayerSelected = clicked;
-        System.out.println(clicked);
     }
+
+    
     public boolean getMultiplayerSelected()
     {
         return multiplayerSelected;

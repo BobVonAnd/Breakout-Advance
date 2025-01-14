@@ -35,6 +35,7 @@ public class Main extends Application //implements EventHandler<ActionEvent>
         primaryStage.show();
     }
 
+    //returns the Stage so Scene can be chance in other classes
     public Stage getPrimaryStage()
     {
         return firstStage;

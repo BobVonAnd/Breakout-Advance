@@ -13,7 +13,9 @@ import javafx.stage.Stage;
 
 public class GameSetup 
 {
+
    
+
     private int width = 59;
     private int height = 25;
     private int[] pos = new int[] {0, 150};
@@ -23,6 +25,7 @@ public class GameSetup
 
     //objects
     private Block[][] nrOfTargets = new Block[xSize][ySize];
+
     //private Platform platform;
     private Ball ball;
     private Wall[] wall = new Wall[3];
@@ -31,11 +34,8 @@ public class GameSetup
     private Pane mediumPane = new Pane();
     private Pane hardPane = new Pane();
 
-    
-
-    public Pane makeEasyPane()
+    public Pane makeEasyPane(boolean multiplayerSelected)
     {
-        //Blocks__________________________________
         for(int i = 0; i < ySize; i++)
         {
             for(int j = 0; j < xSize; j++)
@@ -55,7 +55,7 @@ public class GameSetup
         return easyPane;
     }
 
-    public Pane makeMediumPane()
+    public Pane makeMediumPane(boolean multiplayerSelected)
     {
         Label k = new Label("jj");
         mediumPane.getChildren().addAll(k);
@@ -63,7 +63,7 @@ public class GameSetup
         return mediumPane;
     }
     
-    public Pane makeHardPane()
+    public Pane makeHardPane(boolean multiplayerSelected)
     {
         Label k = new Label("jj");
         
