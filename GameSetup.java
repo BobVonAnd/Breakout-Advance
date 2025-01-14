@@ -89,6 +89,7 @@ public class GameSetup
     private void drawMedium(int x)
     {
         Label k = new Label("jj");
+        k.setLayoutX(200+x);
         mediumPane.getChildren().addAll(k);
     }
     
