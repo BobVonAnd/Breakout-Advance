@@ -2,18 +2,17 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.nio.file.Paths;
 
-public class Main extends Application //implements EventHandler<ActionEvent>
+public class Main extends Application 
 {
     private static Stage firstStage;
-    
-    private Option option = new Option(); 
     private Setup setup = new Setup();
-
     private Scene scene;
-  
-    //The first Pane
     private Pane startPage;
+    private MediaPlayer mediaPlayer;
 
     public static void main(String[] args)
     {
@@ -21,24 +20,28 @@ public class Main extends Application //implements EventHandler<ActionEvent>
     }
 
     @Override
-    public void start(Stage primaryStage)
+    public void start(Stage primaryStage) throws Exception
     {
-        //gets primaryStage
         firstStage = primaryStage;   
         
-        //inisiates the first stage
+        // Initiate the first stage
         primaryStage.setTitle("Breakout");
         setup.chooseModePage();
         startPage = setup.getPane();
         scene = new Scene(startPage, 600, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        // Initializes background music 
+        mediaPlayer = new MediaPlayer(new Media(Paths.get("BeepBox-Song.wav").toUri().toString()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+        mediaPlayer.play();  
     }
 
-    //returns the Stage so Scene can be chance in other classes
     public Stage getPrimaryStage()
     {
         return firstStage;
     }
+}
 
 }
