@@ -1,12 +1,11 @@
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -15,7 +14,7 @@ import javafx.event.ActionEvent;
 
 
 
-public class Setup implements EventHandler<ActionEvent>
+public class Setup 
 {
 
     private Option option = new Option();
@@ -26,6 +25,7 @@ public class Setup implements EventHandler<ActionEvent>
 
     private Font labelFont = Font.font("Anton", FontWeight.BOLD, FontPosture.REGULAR, 40);
     private Font buttonFont = Font.font("Anton", FontWeight.BOLD, FontPosture.REGULAR, 20);
+    private Font checkBoxFont = Font.font("Anton", FontWeight.BOLD, FontPosture.REGULAR, 15);
 
     private Pane startPane = new Pane();  
     
@@ -38,6 +38,7 @@ public class Setup implements EventHandler<ActionEvent>
         Button leftButton = new Button("<-");
         Button rightButton = new Button("->");
         Button playButton = new Button("PLAY");
+        CheckBox multiplayer = new CheckBox("Multiplayer");
 
         easyLabel = new Label("Easy");
         mediumLabel = new Label("Medium");
@@ -113,18 +114,15 @@ public class Setup implements EventHandler<ActionEvent>
         hardLabel.setVisible(false);
         hardLabel.centerShapeProperty();
         hardLabel.setFont(labelFont);
-
-        
+        //________________________________
+        //multiplayer.setPrefSize(120, 60);
+        multiplayer.setLayoutX(470);
+        multiplayer.setLayoutY(330);
+        multiplayer.setFont(checkBoxFont);
         //________________________________
         
         startPane.getChildren().addAll(leftButton,rightButton,playButton,
-        easyLabel, mediumLabel, hardLabel);
-    }
-
-    //fix!!!!!! behøves ikke men giver error
-    @Override public void handle(ActionEvent actionEvent)
-    {
-       
+        easyLabel, mediumLabel, hardLabel,multiplayer);
     }
 
 
