@@ -41,7 +41,7 @@ public class GameSetup
     private Pane mediumPane = new Pane();
     private Pane hardPane = new Pane();
 
-    private Stage gameStage;
+    private Scene gameScene;
 
     private int multiplayerX = 605;
     private int notSelected = 0;
@@ -66,19 +66,20 @@ public class GameSetup
 
     //Easy gamemode_______________________________________________________________________________
     
-    public Stage makeEasyPane(boolean multiplayerSelected, Scene s)
+    public Scene makeEasyPane(boolean multiplayerSelected)
     {
-        drawEasy(notSelected, s);
+        gameScene = new Scene(easyPane, gameWidth, gameHeight);
+        drawEasy(notSelected);
 
         if(multiplayerSelected)
         {
-            drawEasy(multiplayerX ,s);
+            drawEasy(multiplayerX);
         }
-
-        return gameStage;
+        
+        return gameScene;
     }
 
-    private void drawEasy(int x, Scene s)
+    private void drawEasy(int x)
     {
         for(int i = 0; i < ySize; i++)
         {
@@ -89,7 +90,7 @@ public class GameSetup
             }
         }
         //Platform____________________________________________
-        Platform platform = new Platform(100, 10, 250+x, 450, s);
+        Platform platform = new Platform(100, 10, 250+x, 450, gameScene);
 
         //Ball________________________________________________
         Ball ball = new Ball(6, 297 + x, 345, 2, 2);
@@ -139,9 +140,9 @@ public class GameSetup
     }
 
 
-    public Stage getStage()
+    public Scene getScene()
     {
-        return gameStage;
+        return gameScene;
     }
 
     /* 

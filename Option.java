@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 public class Option 
 {
 
-    private GameSetup gameSetup = new GameSetup();
+     
 
     //indicates what mode[] is selected
     private static int whatMode = 0;
@@ -53,23 +53,31 @@ public class Option
 
 
     //swiches scens with GameSetup
-    public void swichScene(int whatScene, Stage primaryStage, boolean multiplayer)
+    public void swichScene(int whatScene, Stage primaryStage)
     {
         int gameSceneWidth = 600;
         int gameSceneHeight = 600;
 
         //makes games width twich as big + 5 pixes
-        if(multiplayer)
+        if(multiplayerSelected)
         {
             gameSceneWidth = gameSceneWidth * 2 + 5;
         }
 
-        //dicides what mode[] was selected and gets the scene from that mode
         
+        GameSetup gameSetup = new GameSetup(gameSceneWidth, gameSceneHeight, multiplayerSelected);
         
        
         //swithes scenes
-        primaryStage.setScene(gameScene);
+        switch (whatScene) {
+            case 0:
+                primaryStage.setScene(gameSetup.makeEasyPane(multiplayerSelected));
+                break;
+        
+            default:
+                break;
+        }
+        
     }
 
     

@@ -33,13 +33,6 @@ public class Setup
     private CheckBox multiplayer;
 
     private Pane startPane = new Pane();  
-    
-
-
-    
-  
-
-    
 
     public void chooseModePage()
     {
@@ -71,7 +64,7 @@ public class Setup
             public void handle(ActionEvent actionEvent)
             {
                 //gets mode[], Stage and boolean mutiplayer
-                option.swichScene(option.modeSelected(), main.getPrimaryStage(), option.getMultiplayerSelected());
+                option.swichScene(option.modeSelected(), main.getPrimaryStage());
             }
             
         });

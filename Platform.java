@@ -27,7 +27,7 @@ public class Platform extends Object2D {
         super(weight, height, x, y);
         this.rectangle = makeGetRectangle();
 
-        option.getGamScene().addEventFilter(KeyEvent.KEY_PRESSED, move);
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, move);
     }
 
     public void moveX (int dx) {
