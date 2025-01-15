@@ -11,10 +11,11 @@ import javafx.stage.Stage;
 
 
 
+
 public class GameSetup 
 {
 
-   
+    private Color c = new Color(0, 0, 0, 0);
 
     private int width = 59;
     private int height = 25;
@@ -22,6 +23,9 @@ public class GameSetup
 
     private int xSize = 10;
     private int ySize = 3; 
+
+    //[0] wall, [1] not a wall
+    private boolean[] isWall = new boolean[] {true, false};
 
     //objects
     private Block[][] nrOfTargets = new Block[xSize][ySize];
@@ -58,16 +62,16 @@ public class GameSetup
         {
             for(int j = 0; j < xSize; j++)
             {
-                nrOfTargets[j][i] = new Block(pos[0] + j * 60 + x, pos[1] - i * 35 , width , height);
-                easyPane.getChildren().add(nrOfTargets[j][i].getR());
+                nrOfTargets[j][i] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
+                easyPane.getChildren().add(nrOfTargets[j][i].getRectangle());
             }
         }
         //Platform____________________________________________
-        Block platform = new Block(250 + x, 450, 100, 10);
+        Block platform = new Block(100 ,10, 250 + x, 450, isWall[1]);
 
         //Ball________________________________________________
-        Ball ball = new Ball(297 + x, 445, 2, 2, 6);
-        easyPane.getChildren().addAll(platform.getR(), ball.getCircle());
+        Ball ball = new Ball(6, 297 + x, 445, 2, 2);
+        easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
     }
 
 

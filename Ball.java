@@ -1,74 +1,111 @@
+// Purpose: This class is used to define the ball moving around the game colliding with other objects.
+
+import java.awt.*;
+
 import javafx.scene.shape.Circle;
 
-public class Ball 
-{
+public class Ball extends Object2D{
+    private double minSpeed = 0.2;
+    public boolean changedDirX, changedDirY;
 
-    private int[] pos;
-    private int[] vel;
-    private int radius;
+    private Circle circle;
 
-    private Circle c;
-
-    public Ball(int x, int y, int vx, int vy, int r) {
-        pos = new int[] {x, y};
-        vel = new int[] {vx, vy};
-        radius = r;
-        drawBall();
+    public Ball(int radius, int x, int y, double vx, double vy) {
+        // Initialize a ball using the given parameters, inhereting from the Object2D class.
+        super(radius, radius, x, y);
+        this.vx = vx;
+        this.vy = vy;
+        this.setMass(1.3);
+        this.circle = makeGetCircle();
     }
 
-    public void drawBall()
-    {
-        c = new Circle(pos[0],pos[1],radius);
-        //StdDraw.filledCircle(pos[0], pos[1], radius);
-    }
+    public void draw() {        
+        
+        changedDirX = false;
+        changedDirY = false;
 
-    public void move() {
-        /* 
-        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        StdDraw.filledCircle(pos[0], pos[1], radius+1);
+       
+        // Move the ball by adding the velocity to the x and y coordinates.
+        this.x += this.vx;
+        this.y += this.vy;
 
-        pos[0] += vel[0];
-        pos[1] += vel[1];
-
-        StdDraw.setPenColor(StdDraw.RED);
-        StdDraw.filledCircle(pos[0], pos[1], radius);
-        */
+        
+        if (this.x == 1) {
+            this.vx = this.vx < 1 ? 1 : this.vx;
+            this.x = -this.x + 1;
+        }
 
         
 
-        c.setTranslateX(vel[0]);
-        c.setTranslateY(vel[1]);
-
+        this.circle.setLayoutX(this.x);
+        this.circle.setLayoutY(this.y);
     }
 
     public boolean outOfBounds() {
-        return pos[1] < 0;
+        // Check if the ball is out of bounds.
+        return this.y < 0;
     }
 
-    public void setPos(int x, int y) {
-        pos[0] = x;
-        pos[1] = y;
+    public void bounceOffWalls() {
+        // Bounce the ball off the walls by reversing the x or y velocity.
+        if (this.x <= 0 && this.vx <= 0) {
+            this.x = 1 + this.getWidth();
+            this.bounceX();
+        }
+        if (this.x >= Game.width) {
+            this.bounceX();
+            this.x = Game.width - 1 - this.getWidth();
+        }
+        if (this.y >= Game.height) {
+            this.bounceY();
+            this.y = Game.height - 1 - this.getHeight();
+        }
     }
 
-    public void setVel(int vx, int vy) {
-        vel[0] = vx;
-        vel[1] = vy;
+    public void bounceX() {
+        // Bounce the ball in the x direction by reversing the x velocity.
+        if (!this.changedDirX) {
+            this.vx = -this.vx;
+            this.changedDirX = true;
+        }
+        
     }
 
-    public int[] getPos() {
-        return pos;
+    public void bounceY() {
+        // Bounce the ball in the y direction by reversing the y velocity.
+        if (!this.changedDirY) {
+            this.vy = -this.vy;
+            this.changedDirY = true;
+        }
     }
 
-    public int[] getVel() {
-        return vel;
+    public double getVx() {
+        // Return the x velocity of the ball.
+        return this.vx;
     }
 
-    public int getRadius() {
-        return radius;
+    public double getVy() {
+        // Return the y velocity of the ball.
+        return this.vy;
     }
 
-    public Circle getCircle()
-    {
-        return c;
+    public void setVx(double vx) {
+        // Set the x velocity of the ball.
+        this.vx = vx;
+    }
+
+    public void setVy(double vy) {
+        // Set the y velocity of the ball.
+        this.vy = vy;
+    }
+
+    public void setX(int x) {
+        // Set the x coordinate of the ball.
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        // Set the y coordinate of the ball.
+        this.y = y;
     }
 }
