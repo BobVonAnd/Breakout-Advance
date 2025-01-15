@@ -1,4 +1,3 @@
-import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -14,6 +13,9 @@ import javafx.stage.Stage;
 
 public class GameSetup 
 {
+
+
+    
 
     private Color c = new Color(0, 0, 0, 0);
 
@@ -34,29 +36,49 @@ public class GameSetup
     private Ball ball;
     private Wall[] wall = new Wall[3];
 
+
     private Pane easyPane = new Pane();
     private Pane mediumPane = new Pane();
     private Pane hardPane = new Pane();
 
+    private Stage gameStage;
+
     private int multiplayerX = 605;
     private int notSelected = 0;
+
+    private boolean multiplayer;
+    private int gameWidth;
+    private int gameHeight;
+
+
+    public GameSetup()
+    {
+
+    }
+
+    public GameSetup(int gameWidth, int gameHeight, boolean multiplayer)
+    {
+        this.multiplayer = multiplayer;
+        this.gameWidth = gameWidth;
+        this.gameHeight = gameHeight;
+    }
 
 
     //Easy gamemode_______________________________________________________________________________
     
-    public Pane makeEasyPane(boolean multiplayerSelected)
+    public Stage makeEasyPane(boolean multiplayerSelected, Scene s)
     {
-        drawEasy(notSelected);
+        drawEasy(notSelected, s);
 
         if(multiplayerSelected)
         {
-            drawEasy(multiplayerX);
+            drawEasy(multiplayerX ,s);
         }
 
-        return easyPane;
+        return gameStage;
     }
 
-    private void drawEasy(int x)
+    private void drawEasy(int x, Scene s)
     {
         for(int i = 0; i < ySize; i++)
         {
@@ -67,10 +89,10 @@ public class GameSetup
             }
         }
         //Platform____________________________________________
-        Block platform = new Block(100 ,10, 250 + x, 450, isWall[1]);
+        Platform platform = new Platform(100, 10, 250+x, 450, s);
 
         //Ball________________________________________________
-        Ball ball = new Ball(6, 297 + x, 445, 2, 2);
+        Ball ball = new Ball(6, 297 + x, 345, 2, 2);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
     }
 
@@ -78,7 +100,7 @@ public class GameSetup
     //Medium gamemode_______________________________________________________________________
     
 
-    public Pane makeMediumPane(boolean multiplayerSelected)
+    public void makeMediumPane(boolean multiplayerSelected)
     {
         drawMedium(notSelected);
 
@@ -86,8 +108,6 @@ public class GameSetup
        {
             drawMedium(multiplayerX);
        }
-
-        return mediumPane;
     }
 
     private void drawMedium(int x)
@@ -118,6 +138,11 @@ public class GameSetup
         hardPane.getChildren().addAll(k);
     }
 
+
+    public Stage getStage()
+    {
+        return gameStage;
+    }
 
     /* 
     public void drawStartGame()
