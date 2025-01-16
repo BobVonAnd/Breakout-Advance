@@ -65,24 +65,18 @@ public class Option
             gameSceneWidth = gameSceneWidth * 2 + 5;
         }
 
-        System.out.println("hejsa");
-        GameSetup gameSetup = new GameSetup(gameSceneWidth, gameSceneHeight, multiplayerSelected);
-        System.out.println("bob");
+        GameSetup gameSetup = new GameSetup(gameSceneWidth, gameSceneHeight, multiplayerSelected, mn);
        
         //swithes scenes
         switch (whatScene) {
             case 0:
-                System.out.println("ø");
                 primaryStage.setScene(gameSetup.makeEasyPane());
-                System.out.println("æ");
                 break;
         
             default:
                 break;
         }
-        System.out.println("ø" + gameSetup.getBlocks());
-        System.out.println("æ" + gameSetup.getBall());
-        System.out.println("å" + gameSetup.getPlatform());
+        
         Game game = new Game(gameSetup.getBlocks(), gameSetup.getPlatform(), gameSetup.getBall());
         
     }

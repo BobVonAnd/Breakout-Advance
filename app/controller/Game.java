@@ -19,9 +19,17 @@ public class Game
     public static final int width = 600;
     public static final int height = 600;
 
-    public Game(Block[] blocks, Platform platform, Ball ball) {
+    public Game(Block[][] blocks, Platform platform, Ball ball) {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
-        this.blocks = blocks;
+        this.blocks = new Block[blocks.length * blocks[0].length];
+
+        for(int i = 0; i < blocks[0].length; i++)
+        {
+            for(int j = 0; j < blocks.length; j++)
+            {
+                this.blocks[i*blocks[0].length +j] = blocks[j][i];
+            }
+        }
         this.platform = platform;
         this.ball = ball;
         this.ball.setX(400);

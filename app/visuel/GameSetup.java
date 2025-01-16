@@ -20,16 +20,14 @@ public class GameSetup
 
     private int width = 59;
     private int height = 25;
-    private int[] pos = new int[] {0, 150};
+    private int[] pos = new int[] {0, 300};
 
-    private int xSize = 10;
-    private int ySize = 3; 
 
     //[0] wall, [1] not a wall
     private boolean[] isWall = new boolean[] {true, false};
 
     //objects
-    private Block[] blocks = new Block[xSize*ySize];
+    private Block[][] blocks;
     private Ball ball;
     private Wall[] wall = new Wall[3];
     private Platform platform;
@@ -48,17 +46,22 @@ public class GameSetup
     private int gameWidth;
     private int gameHeight;
 
+    private int[] yx;
+
 
     public GameSetup()
     {
 
     }
 
-    public GameSetup(int gameWidth, int gameHeight, boolean multiplayer)
+    public GameSetup(int gameWidth, int gameHeight, boolean multiplayer, int[] mn)
     {
         this.multiplayer = multiplayer;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
+        this.yx = mn;
+        this.blocks = new Block[yx[1]][yx[0]];
+        System.out.println(yx[0] + " " + yx[1]);
     }
 
 
@@ -78,12 +81,15 @@ public class GameSetup
 
     private void drawEasy(int x)
     {
-        for(int i = 0; i < ySize; i++)
+        //y row
+        for(int i = 0; i < yx[0]; i++)
         {
-            for(int j = 0; j < xSize; j++)
-            {
-                this.blocks[i*xSize+j] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
-                easyPane.getChildren().add(blocks[xSize*i+j].getRectangle());
+            //x row
+            for(int j = 1; j < yx[1]+1; j++)
+            {   
+                System.out.println(i +" " + j);
+                this.blocks[j-1][i] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
+                easyPane.getChildren().add(blocks[j-1][i].getRectangle());
             }
         }
         //Platform____________________________________________
@@ -142,7 +148,7 @@ public class GameSetup
         return gameScene;
     }
 
-    public Block[] getBlocks()
+    public Block[][] getBlocks()
     {
         return blocks;
     }

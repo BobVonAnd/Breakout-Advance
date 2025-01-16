@@ -29,37 +29,43 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        /* 
         int[] mn = new int[2];
-
         Parameters params = getParameters();
         List<String> args = params.getRaw();
-        for(int i = 0; i < 2; i++)
+        if(args.size() == 2)
         {
-            mn[i] = Integer.parseInt(args.get(i)); 
+            for(int i = 0; i < 2; i++)
+            {
+                mn[i] = Integer.parseInt(args.get(i)); 
+            }
         }
-
-        if(mn.length == 0)
+        else
         {
             mn[0] = 5;
             mn[1] = 5; 
         }
-        */
 
-        firstStage = primaryStage;   
+        if(!(mn[1] <= 10 && mn[1] >= 1) && !(mn[0] <= 20 && mn[1] <= 5))
+        {
+            System.out.println("Error: n and m needs to be within (1-10) for n, and (5-20) for m");
+        }
+        else
+        {
+            firstStage = primaryStage;      
         
-        // Initiate the first stage
-        firstStage.setTitle("Breakout");
-        setup.chooseModePage(new int[2]);
-        startPage = setup.getPane();
-        scene = new Scene(startPage, 600, 600);
-        firstStage.setScene(scene);
-        firstStage.show();
+            // Initiate the first stage
+            firstStage.setTitle("Breakout");
+            setup.chooseModePage(mn);
+            startPage = setup.getPane();
+            scene = new Scene(startPage, 600, 600);
+            firstStage.setScene(scene);
+            firstStage.show();
         
-        // Initializes background music 
-        mediaPlayer = new MediaPlayer(new Media(Paths.get("app/BeepBox-Song.wav").toUri().toString()));
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
-        //mediaPlayer.play();  
+            // Initializes background music 
+            mediaPlayer = new MediaPlayer(new Media(Paths.get("app/BeepBox-Song.wav").toUri().toString()));
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+            //mediaPlayer.play();  
+        }
     }
 
     public static Stage getFirstStage()

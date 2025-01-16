@@ -39,6 +39,8 @@ public class Setup
 
     public void chooseModePage(int[] nm) 
     {
+
+        System.out.println(nm[0] + " " + nm[1]);
         //creates all the nodes in the scene
         leftButton = new Button("<-");
         rightButton = new Button("->");
