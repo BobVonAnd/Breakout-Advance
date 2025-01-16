@@ -41,11 +41,11 @@ public class Main extends Application
         }
         else
         {
-            mn[0] = 5;
-            mn[1] = 5; 
+            mn[0] = 10;
+            mn[1] = 20; 
         }
 
-        if(!(mn[1] <= 10 && mn[1] >= 1) && !(mn[0] <= 20 && mn[1] <= 5))
+        if(!(mn[0] <= 10 && mn[0] >= 1) && !(mn[1] <= 20 && mn[1] <= 5))
         {
             System.out.println("Error: n and m needs to be within (1-10) for n, and (5-20) for m");
         }

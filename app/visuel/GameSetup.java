@@ -14,7 +14,7 @@ public class GameSetup
 
     private int width = 59;
     private int height = 25;
-    private int[] pos = new int[] {0, 300};
+    private int[] pos = new int[] {0, 50};
 
 
     //[0] wall, [1] not a wall
@@ -51,10 +51,27 @@ public class GameSetup
     public GameSetup(int gameWidth, int gameHeight, boolean multiplayer, int[] mn)
     {
         this.multiplayer = multiplayer;
-        this.gameWidth = gameWidth;
+        if(multiplayer)
+        {
+            this.gameWidth = gameWidth + multiplayerX;
+        }
+        else
+        {
+            this.gameWidth = gameWidth;
+        }
         this.gameHeight = gameHeight;
         this.yx = mn;
         this.blocks = new Block[yx[1]][yx[0]];
+        
+        colcelateSpace();
+    }
+
+
+    private void colcelateSpace()
+    {
+        width = gameWidth/yx[1];
+        pos[0] =- width;
+        pos[1] = pos[1] + 25 * yx[0];
         
     }
 
@@ -81,8 +98,7 @@ public class GameSetup
             //x row
             for(int j = 1; j < yx[1]+1; j++)
             {   
-                System.out.println(i +" " + j);
-                this.blocks[j-1][i] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
+                this.blocks[j-1][i] = new Block(width, height, pos[0] + j * width+1 + x, pos[1] - i * 26 , isWall[1]);
                 easyPane.getChildren().add(blocks[j-1][i].getRectangle());
             }
         }
@@ -90,7 +106,7 @@ public class GameSetup
         this.platform = new Platform(100, 10, 250+x, 450, gameScene);
 
         //Ball________________________________________________
-        this.ball = new Ball(6, 297 + x, 345, 0.002, 0.002);
+        this.ball = new Ball(6, 297 + x, 345, 0.2, 0.2);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
     }
 

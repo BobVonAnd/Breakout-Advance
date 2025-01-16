@@ -26,7 +26,7 @@ public class Object2D {
     private double mass = 1;
     // Mass of the object.
 
-    public Object2D(int width, int height, int x, int y){ //Color color) {
+    public Object2D(int width, int height, double x, double y){ //Color color) {
         // Initialize a block using the given parameters.
         this.width = width;
         this.height = height;

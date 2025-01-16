@@ -4,11 +4,14 @@ package app.model;
 import app.controller.Game;
 import javafx.scene.shape.Circle;
 
+
 public class Ball extends Object2D{
     //private double minSpeed = 0.2;
     public boolean changedDirX, changedDirY;
 
     private Circle circle;
+
+ 
 
     public Ball(int radius, int x, int y, double vx, double vy) {
         // Initialize a ball using the given parameters, inhereting from the Object2D class.
@@ -17,10 +20,17 @@ public class Ball extends Object2D{
         this.vy = vy;
         this.setMass(1.3);
         this.circle = makeGetCircle();
+
+    
     }
+
+    
 
     public void draw() {        
         
+        
+        
+
         changedDirX = false;
         changedDirY = false;
 
@@ -37,8 +47,8 @@ public class Ball extends Object2D{
 
         
 
-        this.circle.setCenterX(this.x);
-        this.circle.setCenterY(this.y);
+       // this.circle.setCenterX(this.x);
+        //this.circle.setCenterY(this.y);
     }
 
     public boolean outOfBounds() {

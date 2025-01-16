@@ -13,7 +13,7 @@ public class Block extends Object2D {
 
     // Whether the block exists or not (true by default).
 
-    public Block (int width, int height, int x, int y, boolean wall) {
+    public Block (int width, int height, double x, double y, boolean wall) {
         // Initialize a platform using the given parameters, inhereting from the Block class.
         super(width, height, x, y);
         this.wall = wall;
