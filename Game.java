@@ -1,7 +1,8 @@
-import javafx.application.Platform;
+
 
 public class Game 
 {
+    private GameSetup gameSetup = new GameSetup();
     private final int numberOfBlocks = 10;
     private final Block[] blocks;
     private final Platform platform;
@@ -12,7 +13,9 @@ public class Game
 
     public Game() {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
-
+        this.blocks = gameSetup.getBlocks();
+        this.platform = gameSetup.getPlatform();
+        this.ball = gameSetup.getBall();
         this.gameOver = false;
 
         gameLoop();
@@ -44,7 +47,10 @@ public class Game
             }
         }
         
+
+        
         // Draw the platform and ball.
+        /* 
         StdDraw.show(0);
         StdDraw.clear(StdDraw.WHITE);
         this.ball.draw();
@@ -54,7 +60,7 @@ public class Game
                 block.draw();
             }
         }
-        StdDraw.show(0);
+        */
 
         // Check if the ball is out of bounds and end the game if it is.
         if (this.ball.outOfBounds()) {
@@ -73,12 +79,14 @@ public class Game
         }
 
         // Call the game loop again after a short delay if the game is not over.
+        /* 
         try {
             Thread.sleep(12); 
         } catch(InterruptedException e) {
             // Do nothing.
         }
-        
+        */
+
         if (!this.gameOver) {
             gameLoop();
         }

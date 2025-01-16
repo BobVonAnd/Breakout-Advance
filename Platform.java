@@ -1,7 +1,6 @@
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.event.EventHandler;
 
@@ -36,6 +35,7 @@ public class Platform extends Object2D {
             this.velocity += dx;
         }
     }
+
 
     public void drawHandler(KeyEvent event)
     {
