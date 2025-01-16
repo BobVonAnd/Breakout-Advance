@@ -1,7 +1,5 @@
 // Purpose: This class is used to define the ball moving around the game colliding with other objects.
 
-import java.awt.*;
-
 import javafx.scene.shape.Circle;
 
 public class Ball extends Object2D{
@@ -37,8 +35,8 @@ public class Ball extends Object2D{
 
         
 
-        this.circle.setLayoutX(this.x);
-        this.circle.setLayoutY(this.y);
+        this.circle.setCenterX(this.x);
+        this.circle.setCenterY(this.y);
     }
 
     public boolean outOfBounds() {
