@@ -82,15 +82,15 @@ public class GameSetup
         {
             for(int j = 0; j < xSize; j++)
             {
-                blocks[i*xSize+j] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
+                this.blocks[i*xSize+j] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
                 easyPane.getChildren().add(blocks[xSize*i+j].getRectangle());
             }
         }
         //Platform____________________________________________
-        Platform platform = new Platform(100, 10, 250+x, 450, gameScene);
+        this.platform = new Platform(100, 10, 250+x, 450, gameScene);
 
         //Ball________________________________________________
-        Ball ball = new Ball(6, 297 + x, 345, 2, 2);
+        this.ball = new Ball(6, 297 + x, 345, 2, 2);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
     }
 

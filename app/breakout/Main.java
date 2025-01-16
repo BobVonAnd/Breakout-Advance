@@ -57,7 +57,7 @@ public class Main extends Application
         primaryStage.show();
         
         // Initializes background music 
-        mediaPlayer = new MediaPlayer(new Media(Paths.get("BeepBox-Song.wav").toUri().toString()));
+        mediaPlayer = new MediaPlayer(new Media(Paths.get("app/BeepBox-Song.wav").toUri().toString()));
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
         //mediaPlayer.play();  
     }
