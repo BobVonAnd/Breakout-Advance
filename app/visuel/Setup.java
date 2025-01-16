@@ -6,10 +6,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import app.breakout.Main;
 import app.controller.Option;
 import javafx.event.ActionEvent;
+
 
 public class Setup 
 {
@@ -59,13 +61,14 @@ public class Setup
         playButton.setOnAction(new EventHandler<ActionEvent>() {
             
             
-            private Main main = new Main();
+            
 
             @Override
             public void handle(ActionEvent actionEvent)
             {
+                Stage primaryStage = Main.getFirstStage();
                 //gets mode[], Stage and boolean mutiplayer
-                option.swichScene(option.modeSelected(), main.getPrimaryStage(), nm);
+                option.swichScene(option.modeSelected(), primaryStage, nm);
             }
             
         });

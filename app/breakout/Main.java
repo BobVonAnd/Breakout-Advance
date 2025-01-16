@@ -49,12 +49,12 @@ public class Main extends Application
         firstStage = primaryStage;   
         
         // Initiate the first stage
-        primaryStage.setTitle("Breakout");
+        firstStage.setTitle("Breakout");
         setup.chooseModePage(new int[2]);
         startPage = setup.getPane();
         scene = new Scene(startPage, 600, 600);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        firstStage.setScene(scene);
+        firstStage.show();
         
         // Initializes background music 
         mediaPlayer = new MediaPlayer(new Media(Paths.get("app/BeepBox-Song.wav").toUri().toString()));
@@ -62,7 +62,7 @@ public class Main extends Application
         //mediaPlayer.play();  
     }
 
-    public Stage getPrimaryStage()
+    public static Stage getFirstStage()
     {
         return firstStage;
     }
