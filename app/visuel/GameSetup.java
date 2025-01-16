@@ -1,5 +1,7 @@
 package app.visuel;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import app.model.Ball;
@@ -35,6 +37,9 @@ public class GameSetup
 
     private int multiplayerX = 605;
     private int notSelected = 0;
+
+    private BackgroundFill backgroundFill = new BackgroundFill(Color.valueOf("#D3D3D3"), null, null);
+    private Background background = new Background(backgroundFill);
 
     private boolean multiplayer;
     private int gameWidth;
@@ -72,7 +77,6 @@ public class GameSetup
         width = gameWidth/yx[1];
         pos[0] =- width;
         pos[1] = pos[1] + 25 * yx[0];
-        
     }
 
 
@@ -80,7 +84,9 @@ public class GameSetup
     
     public Scene makeEasyPane()
     {
+        easyPane.setBackground(background);
         gameScene = new Scene(easyPane, gameWidth, gameHeight);
+       
         drawEasy(notSelected);
 
         if(multiplayer)
