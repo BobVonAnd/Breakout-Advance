@@ -28,7 +28,7 @@ public class Ball extends Object2D{
         // Move the ball by adding the velocity to the x and y coordinates.
         this.x += this.vx;
         this.y += this.vy;
-
+        System.out.println("vx " + this.vx + " vy " + this.vy);
         
         if (this.x == 1) {
             this.vx = this.vx < 1 ? 1 : this.vx;

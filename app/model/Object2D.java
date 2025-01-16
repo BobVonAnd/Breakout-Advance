@@ -8,12 +8,13 @@ import javafx.scene.shape.Circle;
 public class Object2D {
 
     private Rectangle r;
+
     private Circle c;
 
     private int width, height;
     // Width and height of the object within the game space.
 
-    public int x, y;
+    public double x, y;
     // Position of the center point of the object.
     
     public double vx, vy;
@@ -50,12 +51,12 @@ public class Object2D {
         return this.c = new Circle(this.x, this.y, this.width);
     }
 
-    public int getY() {
+    public double getY() {
         // Return the y coordinate of the object.
         return this.y;
     }
 
-    public int getX() {
+    public double getX() {
         // Return the x coordinate of the object.
         return this.x;
     }

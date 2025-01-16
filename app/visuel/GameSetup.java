@@ -9,14 +9,8 @@ import app.model.Wall;
 import javafx.scene.Scene;
 
 
-
-
-
-
 public class GameSetup 
 {
-
-    //private Color c = new Color(0, 0, 0, 0);
 
     private int width = 59;
     private int height = 25;
@@ -61,7 +55,7 @@ public class GameSetup
         this.gameHeight = gameHeight;
         this.yx = mn;
         this.blocks = new Block[yx[1]][yx[0]];
-        System.out.println(yx[0] + " " + yx[1]);
+        
     }
 
 
@@ -96,7 +90,7 @@ public class GameSetup
         this.platform = new Platform(100, 10, 250+x, 450, gameScene);
 
         //Ball________________________________________________
-        this.ball = new Ball(6, 297 + x, 345, 2, 2);
+        this.ball = new Ball(6, 297 + x, 345, 0.002, 0.002);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
     }
 

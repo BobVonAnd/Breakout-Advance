@@ -21,6 +21,8 @@ public class Game
 
     public Game(Block[][] blocks, Platform platform, Ball ball) {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
+        
+        //makes blocks[][] -> blocks[]
         this.blocks = new Block[blocks.length * blocks[0].length];
 
         for(int i = 0; i < blocks[0].length; i++)
@@ -32,7 +34,6 @@ public class Game
         }
         this.platform = platform;
         this.ball = ball;
-        this.ball.setX(400);
         this.gameOver = false;
 
         gameLoop();
@@ -49,7 +50,8 @@ public class Game
         //}
 
         // Check for collisions with the ball and the walls and bounce the ball.
-            this.ball.bounceOffWalls();
+            
+        this.ball.bounceOffWalls();
         
         // Check for collisions with the platform and blocks and move the ball.
         if (CollisionHandler.checkCollision(this.ball, this.platform)) {
@@ -66,6 +68,8 @@ public class Game
         
 
         this.ball.draw();
+
+        
         // Draw the platform and ball.
         /* 
         StdDraw.show(0);

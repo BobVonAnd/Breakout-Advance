@@ -1,6 +1,7 @@
 package app.controller;
 import app.visuel.GameSetup;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Option 
@@ -76,6 +77,7 @@ public class Option
             default:
                 break;
         }
+        
         
         Game game = new Game(gameSetup.getBlocks(), gameSetup.getPlatform(), gameSetup.getBall());
         
