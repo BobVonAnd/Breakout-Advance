@@ -12,39 +12,8 @@ public class Game
 
     public Game() {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
-        
-        GameSetup gameSetup = new GameSetup();
-        gameSetup.drawStartGame();
 
         this.gameOver = false;
-        this.blocks = gameSetup.getBlocks();
-
-        System.out.println(this.blocks.length);
-        
-        /* 
-        new Block[numberOfBlocks];
-        for (int i = 0; i < 5; i++) {
-            this.blocks[i] = new Block(50, 20, 100 + i * 100, 500, new Color(120, 120, 120));
-        }
-        
-        for (int i = 0; i < 5; i++) {
-            this.blocks[5 + i] = new Block(50, 20, 100 + i * 100, 550, new Color(120, 120, 120));
-        }
-        */
-
-
-        this.platform = gameSetup.getPlatform();
-
-        //new Platform(100, 10, 300, 100, new Color(120, 120, 120));
-
-        this.ball = gameSetup.getBall();
-        
-        //new Ball(5, 300, 300, new Color(120, 120, 120), 0, -2);
-
-        // Set canvas size and x and y scales.
-        StdDraw.setCanvasSize(this.width, this.height);
-        StdDraw.setXscale(0, this.width);
-        StdDraw.setYscale(0, this.height);
 
         gameLoop();
     }
@@ -60,7 +29,7 @@ public class Game
         //}
 
         // Check for collisions with the ball and the walls and bounce the ball.
-        this.ball.bounceOffWalls();
+            this.ball.bounceOffWalls();
         
         // Check for collisions with the platform and blocks and move the ball.
         if (CollisionHandler.checkCollision(this.ball, this.platform)) {

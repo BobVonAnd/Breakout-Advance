@@ -14,9 +14,6 @@ import javafx.stage.Stage;
 public class GameSetup 
 {
 
-
-    
-
     private Color c = new Color(0, 0, 0, 0);
 
     private int width = 59;

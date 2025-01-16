@@ -18,7 +18,7 @@ public class Platform extends Object2D {
 
     private Rectangle rectangle;
 
-    private Option option = new Option();
+    //private Option option = new Option();
 
 
     // Konstruktør for platformens dimensioner
@@ -41,13 +41,11 @@ public class Platform extends Object2D {
     {
         if(event.getCode() == KeyCode.LEFT)
         {
-            System.out.println("hej");
             this.moveX(-2);
             draw();
         }
         if(event.getCode() == KeyCode.RIGHT)
         {
-            System.out.println("mm");
             this.moveX(2);
             draw();
         }
@@ -85,8 +83,8 @@ public class Platform extends Object2D {
         */
 
         //StdDraw.filledRectangle(this.getX(), this.getY(), this.getWidth() / 2, this.getHeight() / 2);
-        this.rectangle.setLayoutX(this.x);
-        this.rectangle.setLayoutY(this.y);
+        this.rectangle.setX(this.x);
+        this.rectangle.setY(this.y);
         
         System.out.println(this.rectangle.getLayoutX() + " " + this.rectangle.getLayoutY());
         System.out.println("x:" + this.getX() + " y:" + this.getY());
