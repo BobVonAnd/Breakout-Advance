@@ -4,3 +4,8 @@ If Windows:
         Set Screen Zoom to 150%
 
 Java Version used: JDK 21
+
+java -jar v1.jar n m
+No argument -> defold 5,5
+
+eksplenation

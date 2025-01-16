@@ -1,6 +1,11 @@
+package app.visuel;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import app.model.Ball;
+import app.model.Block;
+import app.model.Platform;
+import app.model.Wall;
 import javafx.scene.Scene;
 
 
@@ -11,7 +16,7 @@ import javafx.scene.Scene;
 public class GameSetup 
 {
 
-    private Color c = new Color(0, 0, 0, 0);
+    //private Color c = new Color(0, 0, 0, 0);
 
     private int width = 59;
     private int height = 25;
@@ -25,8 +30,6 @@ public class GameSetup
 
     //objects
     private Block[] blocks = new Block[xSize*ySize];
-
-    //private Platform platform;
     private Ball ball;
     private Wall[] wall = new Wall[3];
     private Platform platform;
@@ -61,16 +64,15 @@ public class GameSetup
 
     //Easy gamemode_______________________________________________________________________________
     
-    public Scene makeEasyPane(boolean multiplayerSelected)
+    public Scene makeEasyPane()
     {
         gameScene = new Scene(easyPane, gameWidth, gameHeight);
         drawEasy(notSelected);
 
-        if(multiplayerSelected)
+        if(multiplayer)
         {
             drawEasy(multiplayerX);
         }
-        
         return gameScene;
     }
 
@@ -80,8 +82,8 @@ public class GameSetup
         {
             for(int j = 0; j < xSize; j++)
             {
-                blocks[j*i] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
-                easyPane.getChildren().add(blocks[j*i].getRectangle());
+                blocks[i*xSize+j] = new Block(width, height, pos[0] + j * 60 + x, pos[1] - i * 35 , isWall[1]);
+                easyPane.getChildren().add(blocks[xSize*i+j].getRectangle());
             }
         }
         //Platform____________________________________________
@@ -96,11 +98,11 @@ public class GameSetup
     //Medium gamemode_______________________________________________________________________
     
 
-    public void makeMediumPane(boolean multiplayerSelected)
+    public void makeMediumPane()
     {
         drawMedium(notSelected);
 
-       if(multiplayerSelected)
+       if(multiplayer)
        {
             drawMedium(multiplayerX);
        }
@@ -115,11 +117,11 @@ public class GameSetup
     
 
     //Hard gamemode__________________________________________________________________________
-    public Pane makeHardPane(boolean multiplayerSelected)
+    public Pane makeHardPane()
     {
         drawHard(notSelected);
 
-        if(multiplayerSelected)
+        if(multiplayer)
         {
             drawHard(multiplayerX);
         }

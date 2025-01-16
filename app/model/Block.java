@@ -1,3 +1,4 @@
+package app.model;
 // Purpose: This class is used to create a breakable/killable block in the game.
 
 import javafx.scene.shape.Rectangle;

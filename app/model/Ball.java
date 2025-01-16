@@ -1,9 +1,11 @@
+package app.model;
 // Purpose: This class is used to define the ball moving around the game colliding with other objects.
 
+import app.controller.Game;
 import javafx.scene.shape.Circle;
 
 public class Ball extends Object2D{
-    private double minSpeed = 0.2;
+    //private double minSpeed = 0.2;
     public boolean changedDirX, changedDirY;
 
     private Circle circle;

@@ -1,21 +1,30 @@
-
+package app.controller;
+import javafx.scene.shape.Rectangle;
+import app.model.Ball;
+import app.model.Block;
+import app.model.Platform;
+import app.visuel.GameSetup;
+import javafx.scene.shape.Circle;
 
 public class Game 
 {
     private GameSetup gameSetup = new GameSetup();
-    private final int numberOfBlocks = 10;
+    //private final int numberOfBlocks = 10;
     private final Block[] blocks;
     private final Platform platform;
     private final Ball ball;
     private boolean gameOver;
-    public static final int width = 800;
+
+    //skal fixes
+    public static final int width = 600;
     public static final int height = 600;
 
-    public Game() {
+    public Game(Block[] blocks, Platform platform, Ball ball) {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
-        this.blocks = gameSetup.getBlocks();
-        this.platform = gameSetup.getPlatform();
-        this.ball = gameSetup.getBall();
+        this.blocks = blocks;
+        this.platform = platform;
+        this.ball = ball;
+        this.ball.setX(400);
         this.gameOver = false;
 
         gameLoop();
@@ -48,7 +57,7 @@ public class Game
         }
         
 
-        
+        this.ball.draw();
         // Draw the platform and ball.
         /* 
         StdDraw.show(0);

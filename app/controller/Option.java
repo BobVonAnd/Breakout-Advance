@@ -1,5 +1,6 @@
+package app.controller;
+import app.visuel.GameSetup;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Option 
@@ -53,7 +54,7 @@ public class Option
 
 
     //swiches scens with GameSetup
-    public void swichScene(int whatScene, Stage primaryStage)
+    public void swichScene(int whatScene, Stage primaryStage, int[] mn)
     {
         int gameSceneWidth = 600;
         int gameSceneHeight = 600;
@@ -64,19 +65,25 @@ public class Option
             gameSceneWidth = gameSceneWidth * 2 + 5;
         }
 
-        
+        System.out.println("hejsa");
         GameSetup gameSetup = new GameSetup(gameSceneWidth, gameSceneHeight, multiplayerSelected);
-        
+        System.out.println("bob");
        
         //swithes scenes
         switch (whatScene) {
             case 0:
-                primaryStage.setScene(gameSetup.makeEasyPane(multiplayerSelected));
+                System.out.println("ø");
+                primaryStage.setScene(gameSetup.makeEasyPane());
+                System.out.println("æ");
                 break;
         
             default:
                 break;
         }
+        System.out.println("ø" + gameSetup.getBlocks());
+        System.out.println("æ" + gameSetup.getBall());
+        System.out.println("å" + gameSetup.getPlatform());
+        Game game = new Game(gameSetup.getBlocks(), gameSetup.getPlatform(), gameSetup.getBall());
         
     }
 

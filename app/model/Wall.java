@@ -1,7 +1,8 @@
+package app.model;
 import org.w3c.dom.css.Rect;
 
 import javafx.scene.shape.Rectangle;
-
+//__________!!!!!!!!!!!!!Scriptet brues ikke!!!!!!!!!!!__________________________
 public class Wall {
 
     private int hight;

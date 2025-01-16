@@ -1,4 +1,4 @@
-import javafx.scene.Scene;
+package app.visuel;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -6,8 +6,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 import javafx.event.EventHandler;
+import app.breakout.Main;
+import app.controller.Option;
 import javafx.event.ActionEvent;
 
 public class Setup 
@@ -34,7 +35,7 @@ public class Setup
 
     private Pane startPane = new Pane();  
 
-    public void chooseModePage()
+    public void chooseModePage(int[] nm) 
     {
         //creates all the nodes in the scene
         leftButton = new Button("<-");
@@ -64,7 +65,7 @@ public class Setup
             public void handle(ActionEvent actionEvent)
             {
                 //gets mode[], Stage and boolean mutiplayer
-                option.swichScene(option.modeSelected(), main.getPrimaryStage());
+                option.swichScene(option.modeSelected(), main.getPrimaryStage(), nm);
             }
             
         });

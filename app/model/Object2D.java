@@ -1,9 +1,6 @@
+package app.model;
 // Purpose: Define the Object2D class, which represents any object within the game.
-
-
 import javafx.scene.shape.Rectangle;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 

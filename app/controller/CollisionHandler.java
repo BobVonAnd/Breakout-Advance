@@ -1,3 +1,9 @@
+package app.controller;
+import app.model.Ball;
+import app.model.Block;
+import app.model.Object2D;
+import app.model.Platform;
+
 public class CollisionHandler {
     public static boolean checkCollision(Object2D obj1, Object2D obj2) {
         // Check if two objects are colliding by comparing their x and y coordinates.
