@@ -3,8 +3,11 @@ import app.model.Ball;
 import app.model.Block;
 import app.model.Object2D;
 import app.model.Platform;
+import app.model.Score;
 
 public class CollisionHandler {
+    private static Score score = new Score();
+
     public static boolean checkCollision(Object2D obj1, Object2D obj2) {
         // Check if two objects are colliding by comparing their x and y coordinates.
         return obj1.x - obj1.getWidth() / 2 < obj2.x + obj2.getWidth() / 2 &&
@@ -14,6 +17,12 @@ public class CollisionHandler {
     }
 
     public static void handleCollision (Ball ball, Object2D obj) {
+        if (obj instanceof Block block && !block.isDestroyed()) {
+            // Sets visibilitty to false and then gives a point to the scoringsystem
+            block.destroy();
+            score.addPoints(1);
+        }
+        
         // Handle the collision between the ball and obj.
         if (ball.x - ball.getWidth() / 2 < obj.x + obj.getWidth() / 2 &&
             ball.x + ball.getWidth() / 2 > obj.x - obj.getWidth() / 2 &&
@@ -32,5 +41,13 @@ public class CollisionHandler {
                 ball.bounceX();
             }
         }
+    }
+
+    public static int getScore() {
+        return score.getScore();
+    }
+
+    public static int resetScore() {
+        return resetScore();
     }
 }

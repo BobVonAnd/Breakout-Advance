@@ -5,7 +5,8 @@ import javafx.scene.shape.Rectangle;
 
 public class Block extends Object2D {
 
-    private boolean exists;
+    // Checking if the block is visibel
+    private boolean exists = true;
 
     private Rectangle rectangle;
 
@@ -28,6 +29,10 @@ public class Block extends Object2D {
             this.exists = false;
             rectangle.setVisible(false);
         }
+    }
+
+    public boolean isDestroyed() {
+        return !exists;
     }
 
     /* 
