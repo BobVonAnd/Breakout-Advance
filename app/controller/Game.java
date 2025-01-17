@@ -16,10 +16,10 @@ public class Game
 
 
     //private final int numberOfBlocks = 10;
-    private Block[] blocks;
-    private Platform platform;
-    private Ball ball;
-    private Block[] gameWalls;
+    private final Block[] blocks;
+    private final Platform platform;
+    private final Ball ball;
+   
 
     private boolean gameOver;
 
@@ -35,7 +35,7 @@ public class Game
 
         this.scene = scene;
 
-        this.gameWalls = gameWalls;
+        
         // Initialize the game by creating an array of blocks and defining the platform and ball.
         
         //makes blocks[][] -> blocks[]
@@ -89,6 +89,7 @@ public class Game
         {
             this.ball.move(); 
 
+            //hits gamewalls
             if(this.ball.x < 0)
             {
                 this.ball.bounceX();;
@@ -96,6 +97,14 @@ public class Game
             else if(this.ball.x > scene.getWidth())
             {
                 this.ball.bounceX();
+            }
+            else if(this.ball.y > scene.getHeight())
+            {
+                this.ball.bounceY();
+            }
+            else if(this.ball.y < 0)
+            {
+                this.ball.bounceY();
             }
 
             if (CollisionHandler.checkCollision(this.ball, this.platform)) {
