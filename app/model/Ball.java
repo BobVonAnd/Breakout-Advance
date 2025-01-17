@@ -34,6 +34,9 @@ public class Ball extends Object2D{
        
         this.circle.setCenterX(circle.getCenterX() + speedXY[0]);
         this.circle.setCenterY(circle.getCenterY() +speedXY[1]);
+
+        this.x = this.circle.getCenterX();
+        this.y = this.circle.getCenterY();
     }
 
     public void setAngle(int angle)
