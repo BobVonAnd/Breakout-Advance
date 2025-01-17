@@ -8,6 +8,7 @@ import app.model.Ball;
 import app.model.Block;
 import app.model.Platform;
 import app.model.Wall;
+import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 
 
