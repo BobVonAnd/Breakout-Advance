@@ -98,10 +98,6 @@ public class Game
             {
                 this.ball.bounceX();
             }
-            else if(this.ball.y > scene.getHeight())
-            {
-                this.ball.bounceY();
-            }
             else if(this.ball.y < 0)
             {
                 this.ball.bounceY();
@@ -119,13 +115,7 @@ public class Game
                 }
             }
 
-            for (Block gameWalls : this.blocks) {
-                if (CollisionHandler.checkCollision(this.ball, gameWalls)) {
-                    CollisionHandler.handleCollision(this.ball, gameWalls);
-                    System.out.println("Ball collided with block.");
-                }
-            }
-
+          
             if (this.ball.outOfBounds()) {
                 this.gameOver = true;
             }
