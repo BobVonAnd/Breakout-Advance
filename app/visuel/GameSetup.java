@@ -76,7 +76,6 @@ public class GameSetup
         colcelateSpace();
     }
 
-
     private void colcelateSpace()
     {
         width = gameWidth/yx[1];

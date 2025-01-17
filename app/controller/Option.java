@@ -73,7 +73,14 @@ public class Option
             case 0:
                 primaryStage.setScene(gameSetup.makeEasyPane());
                 break;
-        
+            //just here so the user can press the button, without the program failing
+            case 1:
+                primaryStage.setScene(gameSetup.makeEasyPane());
+                break;
+            case 2:
+                primaryStage.setScene(gameSetup.makeEasyPane());
+                break;
+
             default:
                 break;
         }

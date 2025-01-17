@@ -5,9 +5,6 @@ import app.model.Object2D;
 import app.model.Platform;
 import app.model.Score;
 
-
-
-
 public class CollisionHandler {
     private static Score score = new Score();
 
@@ -45,8 +42,6 @@ public class CollisionHandler {
             }
         }
     }
-
-    
 
     public static int getScore() {
         return score.getScore();

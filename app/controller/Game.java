@@ -10,11 +10,6 @@ import javafx.scene.shape.Rectangle;
 
 public class Game 
 {
-    private GameSetup gameSetup = new GameSetup();
-
-    private CollisionHandler collisionHandler = new CollisionHandler();
-
-
     //private final int numberOfBlocks = 10;
     private final Block[] blocks;
     private final Platform platform;
@@ -62,21 +57,23 @@ public class Game
     //Loop
     private void startGame()
     {
+        
         new AnimationTimer()
         {
             @Override
             public void handle(long now)
             {
+                
                 updateBall();
+                
             }
-            
         }.start();
+        
+        
     }
 
     private void updateBall()
     {
-        
-
         //makes sure that the ball doesn't move until before the platform.
         //sets the angle of the ball.
         if(!gameStarted)
@@ -85,7 +82,7 @@ public class Game
             this.ball.setAngle(this.platform.rightLeft());
         }
         //moves ball and checks for collitionens
-        else
+        else if(!gameOver)
         {
             this.ball.move(); 
 
@@ -124,9 +121,10 @@ public class Game
                     allBlocksDestroyed = false;
                 }
             }
-            
+
             if (allBlocksDestroyed) {
                 this.gameOver = true;
+               
             }
 
             
