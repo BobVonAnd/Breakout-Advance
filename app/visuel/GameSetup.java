@@ -29,7 +29,6 @@ public class GameSetup
     private Block[][] blocks;
     private Ball ball;
     private Platform platform;
-    private Block[] gameWalls;
 
 
     private Pane easyPane = new Pane();
@@ -122,18 +121,14 @@ public class GameSetup
             }
         }
 
-        gameWalls = new Block[] {new Block(5, 600, 0, 0, isWall[0]),
-        new Block(5, 600, 600-5, 0, isWall[0]), 
-        new Block(600, 5, 0, 0, isWall[0])};
-        
-        easyPane.getChildren().addAll(gameWalls[0].getRectangle(),
-        gameWalls[1].getRectangle(),gameWalls[2].getRectangle());
+       
+       
        
         //Platform____________________________________________
         this.platform = new Platform(100, 10, 250+x, 450, gameScene);
 
         //Ball________________________________________________
-        this.ball = new Ball(6, 297 + x, 345, 5, 5);
+        this.ball = new Ball(6, 297 + x, 444, 5, 5);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
 
         updateScore(); 
@@ -226,17 +221,10 @@ public class GameSetup
         return blocks;
     }
 
-    public Block[] getGameWalls()
-    {
-        return gameWalls;
-    }
-
-    
     public Platform getPlatform()
     {
         return platform;
     }
-    
 
     public Ball getBall()
     {

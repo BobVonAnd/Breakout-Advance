@@ -62,9 +62,6 @@ public class Setup
         //makes anonymous class
         playButton.setOnAction(new EventHandler<ActionEvent>() {
             
-            
-            
-
             @Override
             public void handle(ActionEvent actionEvent)
             {

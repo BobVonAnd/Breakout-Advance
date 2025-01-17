@@ -31,7 +31,7 @@ public class Game
 
     private boolean gameStarted = false;
 
-    public Game(Block[][] blocks, Block[] gameWalls, Platform platform, Ball ball, Scene scene) {
+    public Game(Block[][] blocks, Platform platform, Ball ball, Scene scene) {
 
         this.scene = scene;
 
@@ -105,18 +105,15 @@ public class Game
 
             if (CollisionHandler.checkCollision(this.ball, this.platform)) {
                 CollisionHandler.handleCollision(this.ball, this.platform);
-                System.out.println("Ball collided with platform.");
             }
     
             for (Block block : this.blocks) {
                 if (CollisionHandler.checkCollision(this.ball, block) && block.exists()) {
                     CollisionHandler.handleCollision(this.ball, block);
-                    System.out.println("Ball collided with block.");
                 }
             }
 
-          
-            if (this.ball.outOfBounds()) {
+            if (this.ball.y < 0) {
                 this.gameOver = true;
             }
     
@@ -127,9 +124,12 @@ public class Game
                     allBlocksDestroyed = false;
                 }
             }
+            
             if (allBlocksDestroyed) {
                 this.gameOver = true;
             }
+
+            
         }
           
     }

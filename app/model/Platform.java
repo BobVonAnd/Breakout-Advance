@@ -58,7 +58,7 @@ public class Platform extends Object2D {
                 firstMoveMade = true;
                 angle = 4;
             }
-            move(-15);
+            move(-20);
             //draw();
         }
         if(event.getCode() == KeyCode.RIGHT)
@@ -68,7 +68,7 @@ public class Platform extends Object2D {
                 firstMoveMade = true;
                 angle = 1;
             }
-            move(15);
+            move(20);
             //draw();
         }
     }

@@ -4,7 +4,7 @@ import app.model.Block;
 import app.model.Object2D;
 import app.model.Platform;
 import app.model.Score;
-import javafx.scene.Scene;
+
 
 
 
