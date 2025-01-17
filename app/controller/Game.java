@@ -1,5 +1,4 @@
 package app.controller;
-import javafx.scene.shape.Rectangle;
 import app.model.Ball;
 import app.model.Block;
 import app.model.Platform;
@@ -7,17 +6,20 @@ import app.visuel.GameSetup;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 public class Game 
 {
     private GameSetup gameSetup = new GameSetup();
 
+    private CollisionHandler collisionHandler = new CollisionHandler();
+
 
     //private final int numberOfBlocks = 10;
-    private final Block[] blocks;
-    private final Platform platform;
-    private final Ball ball;
-    private final Block[] gameWalls;
+    private Block[] blocks;
+    private Platform platform;
+    private Ball ball;
+    private Block[] gameWalls;
 
     private boolean gameOver;
 
@@ -73,6 +75,8 @@ public class Game
 
     private void updateBall()
     {
+        
+
         //makes sure that the ball doesn't move until before the platform.
         //sets the angle of the ball.
         if(!gameStarted)
@@ -84,6 +88,15 @@ public class Game
         else
         {
             this.ball.move(); 
+
+            if(this.ball.x < 0)
+            {
+                this.ball.bounceX();;
+            }
+            else if(this.ball.x > scene.getWidth())
+            {
+                this.ball.bounceX();
+            }
 
             if (CollisionHandler.checkCollision(this.ball, this.platform)) {
                 CollisionHandler.handleCollision(this.ball, this.platform);

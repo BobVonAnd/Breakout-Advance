@@ -4,6 +4,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 
 
 
@@ -57,7 +58,7 @@ public class Platform extends Object2D {
                 firstMoveMade = true;
                 angle = 4;
             }
-            move(-5);
+            move(-15);
             //draw();
         }
         if(event.getCode() == KeyCode.RIGHT)
@@ -67,7 +68,7 @@ public class Platform extends Object2D {
                 firstMoveMade = true;
                 angle = 1;
             }
-            move(5);
+            move(15);
             //draw();
         }
     }
@@ -127,5 +128,10 @@ public class Platform extends Object2D {
     public int rightLeft()
     {
         return angle;
+    }
+
+    public Bounds getPlatformBounds()
+    {
+        return rectangle.getBoundsInParent();
     }
 }

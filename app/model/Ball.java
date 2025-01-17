@@ -2,6 +2,7 @@ package app.model;
 // Purpose: This class is used to define the ball moving around the game colliding with other objects.
 
 import app.controller.Game;
+import javafx.geometry.Bounds;
 import javafx.scene.shape.Circle;
 
 
@@ -160,5 +161,10 @@ public class Ball extends Object2D{
     public void setY(int y) {
         // Set the y coordinate of the ball.
         this.y = y;
+    }
+
+    public Bounds getBounds()
+    {
+        return circle.getBoundsInParent();
     }
 }

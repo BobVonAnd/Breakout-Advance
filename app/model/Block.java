@@ -1,6 +1,7 @@
 package app.model;
 // Purpose: This class is used to create a breakable/killable block in the game.
 
+import javafx.geometry.Bounds;
 import javafx.scene.shape.Rectangle;
 
 public class Block extends Object2D {
@@ -48,5 +49,11 @@ public class Block extends Object2D {
     public boolean exists () {
         // Return whether the block exists or not.
         return this.exists;
+    }
+
+
+    public Bounds getBlockBounds()
+    {
+        return rectangle.getBoundsInParent();
     }
 }

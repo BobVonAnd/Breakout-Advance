@@ -4,6 +4,9 @@ import app.model.Block;
 import app.model.Object2D;
 import app.model.Platform;
 import app.model.Score;
+import javafx.scene.Scene;
+
+
 
 public class CollisionHandler {
     private static Score score = new Score();
@@ -33,7 +36,7 @@ public class CollisionHandler {
                 ball.x + ball.getWidth() > obj.x - obj.getWidth()) {
                 ball.bounceY();
                 if (obj instanceof Platform platform) {
-                    //ball.setVx(ball.getVx() + platform.getVelocity() * platform.getWeight() * 0.3);
+                    ball.setVx(ball.getVx() + platform.getVelocity() * platform.getWeight() * 0.3);
                 } else {
                     ((Block) obj).destroy();
                 }
