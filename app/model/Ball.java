@@ -117,7 +117,8 @@ public class Ball extends Object2D{
     public void bounceX() {
         // Bounce the ball in the x direction by reversing the x velocity.
         if (!this.changedDirX) {
-            this.vx = -this.vx;
+            //this.vx = -this.vx;
+            this.speedXY[0] *= -1;
             this.changedDirX = true;
         }
         
@@ -126,7 +127,8 @@ public class Ball extends Object2D{
     public void bounceY() {
         // Bounce the ball in the y direction by reversing the y velocity.
         if (!this.changedDirY) {
-            this.vy = -this.vy;
+            //this.vy = -this.vy;
+            this.speedXY[1] *= -1;
             this.changedDirY = true;
         }
     }

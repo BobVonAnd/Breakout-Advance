@@ -24,7 +24,7 @@ public class CollisionHandler {
                 ball.x + ball.getWidth() > obj.x - obj.getWidth() / 2) {
                 ball.bounceY();
                 if (obj instanceof Platform platform) {
-                    ball.setVx(ball.getVx() + platform.getVelocity() * platform.getWeight() * 0.3);
+                    //ball.setVx(ball.getVx() + platform.getVelocity() * platform.getWeight() * 0.3);
                 } else {
                     ((Block) obj).destroy();
                 }
