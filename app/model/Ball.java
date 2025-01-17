@@ -31,7 +31,6 @@ public class Ball extends Object2D{
 
     public void move()
     {
-       
         this.circle.setCenterX(circle.getCenterX() + speedXY[0]);
         this.circle.setCenterY(circle.getCenterY() +speedXY[1]);
 

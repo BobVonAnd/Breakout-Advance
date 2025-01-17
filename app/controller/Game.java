@@ -5,6 +5,7 @@ import app.model.Block;
 import app.model.Platform;
 import app.visuel.GameSetup;
 import javafx.animation.AnimationTimer;
+import javafx.scene.Scene;
 import javafx.scene.shape.Circle;
 
 public class Game 
@@ -16,7 +17,11 @@ public class Game
     private final Block[] blocks;
     private final Platform platform;
     private final Ball ball;
+    private final Block[] gameWalls;
+
     private boolean gameOver;
+
+    private Scene scene;
 
     //skal fixes
     public static final int width = 600;
@@ -24,11 +29,17 @@ public class Game
 
     private boolean gameStarted = false;
 
-    public Game(Block[][] blocks, Platform platform, Ball ball) {
+    public Game(Block[][] blocks, Block[] gameWalls, Platform platform, Ball ball, Scene scene) {
+
+        this.scene = scene;
+
+        this.gameWalls = gameWalls;
         // Initialize the game by creating an array of blocks and defining the platform and ball.
         
         //makes blocks[][] -> blocks[]
         this.blocks = new Block[blocks.length * blocks[0].length];
+
+       
 
         for(int i = 0; i < blocks[0].length; i++)
         {
@@ -40,10 +51,13 @@ public class Game
         this.platform = platform;
         this.ball = ball;
         this.gameOver = false;
+
+
         startGame();
+
     }
 
-
+    //Loop
     private void startGame()
     {
         new AnimationTimer()
@@ -59,11 +73,14 @@ public class Game
 
     private void updateBall()
     {
+        //makes sure that the ball doesn't move until before the platform.
+        //sets the angle of the ball.
         if(!gameStarted)
         {
             gameStarted = this.platform.firstMove();
             this.ball.setAngle(this.platform.rightLeft());
         }
+        //moves ball and checks for collitionens
         else
         {
             this.ball.move(); 
@@ -76,6 +93,13 @@ public class Game
             for (Block block : this.blocks) {
                 if (CollisionHandler.checkCollision(this.ball, block) && block.exists()) {
                     CollisionHandler.handleCollision(this.ball, block);
+                    System.out.println("Ball collided with block.");
+                }
+            }
+
+            for (Block gameWalls : this.blocks) {
+                if (CollisionHandler.checkCollision(this.ball, gameWalls)) {
+                    CollisionHandler.handleCollision(this.ball, gameWalls);
                     System.out.println("Ball collided with block.");
                 }
             }

@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import app.model.Ball;
 import app.model.Block;
 import app.model.Platform;
-import app.model.Wall;
 import javafx.scene.Scene;
 
 
@@ -25,8 +24,8 @@ public class GameSetup
     //objects
     private Block[][] blocks;
     private Ball ball;
-    private Wall[] wall = new Wall[3];
     private Platform platform;
+    private Block[] gameWalls;
 
 
     private Pane easyPane = new Pane();
@@ -95,6 +94,8 @@ public class GameSetup
         scoreLabel.setLayoutY(10);
         easyPane.getChildren().add(scoreLabel); 
        
+        
+
         drawEasy(notSelected);
 
         if(multiplayer)
@@ -116,6 +117,14 @@ public class GameSetup
                 easyPane.getChildren().add(blocks[j-1][i].getRectangle());
             }
         }
+
+        gameWalls = new Block[] {new Block(5, 600, 0, 0, isWall[0]),
+        new Block(5, 600, 600-5, 0, isWall[0]), 
+        new Block(600, 5, 0, 0, isWall[0])};
+        
+        easyPane.getChildren().addAll(gameWalls[0].getRectangle(),
+        gameWalls[1].getRectangle(),gameWalls[2].getRectangle());
+       
         //Platform____________________________________________
         this.platform = new Platform(100, 10, 250+x, 450, gameScene);
 
@@ -197,9 +206,9 @@ public class GameSetup
         return blocks;
     }
 
-    public Wall[] getWalls()
+    public Block[] getGameWalls()
     {
-        return wall;
+        return gameWalls;
     }
 
     

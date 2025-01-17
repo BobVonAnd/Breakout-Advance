@@ -79,7 +79,7 @@ public class Option
         }
         
         
-        Game game = new Game(gameSetup.getBlocks(), gameSetup.getPlatform(), gameSetup.getBall());
+        Game game = new Game(gameSetup.getBlocks(), gameSetup.getGameWalls(), gameSetup.getPlatform(), gameSetup.getBall(), primaryStage.getScene());
         
     }
 
