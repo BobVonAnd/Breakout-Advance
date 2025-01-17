@@ -49,6 +49,7 @@ public class GameSetup
 
     private int[] yx;
 
+    private Label scoreLabel = new Label("Score: 0");
 
     public GameSetup()
     {
@@ -88,6 +89,11 @@ public class GameSetup
     {
         easyPane.setBackground(background);
         gameScene = new Scene(easyPane, gameWidth, gameHeight);
+
+        // Scorelabel
+        scoreLabel.setLayoutX(10); 
+        scoreLabel.setLayoutY(10);
+        easyPane.getChildren().add(scoreLabel); 
        
         drawEasy(notSelected);
 
@@ -116,6 +122,8 @@ public class GameSetup
         //Ball________________________________________________
         this.ball = new Ball(6, 297 + x, 345, 5, 5);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
+
+        updateScore(); 
     }
 
 
@@ -124,6 +132,11 @@ public class GameSetup
 
     public void makeMediumPane()
     {
+        // Scorelabel
+        scoreLabel.setLayoutX(10); 
+        scoreLabel.setLayoutY(10);
+        mediumPane.getChildren().add(scoreLabel); 
+        
         drawMedium(notSelected);
 
        if(multiplayer)
@@ -137,12 +150,19 @@ public class GameSetup
         Label k = new Label("jj");
         k.setLayoutX(200+x);
         mediumPane.getChildren().addAll(k);
+
+        updateScore(); 
     }
     
 
     //Hard gamemode__________________________________________________________________________
     public Pane makeHardPane()
     {
+        // Scorelabel
+        scoreLabel.setLayoutX(10); 
+        scoreLabel.setLayoutY(10);
+        hardPane.getChildren().add(scoreLabel); 
+
         drawHard(notSelected);
 
         if(multiplayer)
@@ -158,8 +178,14 @@ public class GameSetup
         Label k = new Label("jj");
         
         hardPane.getChildren().addAll(k);
+
+        updateScore(); 
     }
 
+    private void updateScore()
+    {
+        scoreLabel.setText("Score: " + app.controller.CollisionHandler.getScore()); 
+    }
 
     public Scene getScene()
     {
