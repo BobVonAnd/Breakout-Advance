@@ -8,11 +8,14 @@ import app.model.Ball;
 import app.model.Block;
 import app.model.Platform;
 import app.model.Wall;
+import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 
 
 public class GameSetup 
 {
+    // Opdater scoringssystemet
+    private AnimationTimer timer;
 
     private int width = 59;
     private int height = 25;
@@ -82,7 +85,6 @@ public class GameSetup
         pos[1] = pos[1] + 25 * yx[0];
     }
 
-
     //Easy gamemode_______________________________________________________________________________
     
     public Scene makeEasyPane()
@@ -101,6 +103,7 @@ public class GameSetup
         {
             drawEasy(multiplayerX);
         }
+        startGameLoop();
         return gameScene;
     }
 
@@ -182,6 +185,22 @@ public class GameSetup
         updateScore(); 
     }
 
+    private void startGameLoop() {
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                updateScore(); 
+            }
+        };
+        timer.start();
+    }
+
+    private void stopGameLoop() {
+        if (timer != null) {
+            timer.stop();
+        }
+    }
+
     private void updateScore()
     {
         scoreLabel.setText("Score: " + app.controller.CollisionHandler.getScore()); 
@@ -213,10 +232,4 @@ public class GameSetup
     {
         return ball;
     }
-
-    
-    
-
-
-    
 }
