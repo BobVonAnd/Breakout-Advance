@@ -28,7 +28,7 @@ public class Block extends Object2D {
         if(!wall)
         {
             this.exists = false;
-            rectangle.setVisible(false);
+            
         }
     }
 
@@ -51,9 +51,4 @@ public class Block extends Object2D {
         return this.exists;
     }
 
-
-    public Bounds getBlockBounds()
-    {
-        return rectangle.getBoundsInParent();
-    }
 }

@@ -92,7 +92,7 @@ public class Game
             //hits gamewalls
             if(this.ball.x < 0)
             {
-                this.ball.bounceX();;
+                this.ball.bounceX();
             }
             else if(this.ball.x > scene.getWidth())
             {

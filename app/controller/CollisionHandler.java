@@ -16,7 +16,7 @@ public class CollisionHandler {
         return obj1.x - obj1.getWidth() < obj2.x + obj2.getWidth() &&
                obj1.x + obj1.getWidth() > obj2.x &&
                obj1.y - obj1.getHeight() < obj2.y + obj2.getHeight() &&
-               obj1.y + obj1.getHeight() > obj2.y ;
+               obj1.y + obj1.getHeight() > obj2.y;
     }
 
     public static void handleCollision (Ball ball, Object2D obj) {
