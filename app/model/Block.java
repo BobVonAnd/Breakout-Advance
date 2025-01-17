@@ -28,7 +28,7 @@ public class Block extends Object2D {
         if(!wall)
         {
             this.exists = false;
-            
+            this.rectangle.setVisible(exists);
         }
     }
 
