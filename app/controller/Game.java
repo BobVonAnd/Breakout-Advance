@@ -4,11 +4,14 @@ import app.model.Ball;
 import app.model.Block;
 import app.model.Platform;
 import app.visuel.GameSetup;
+import javafx.animation.AnimationTimer;
 import javafx.scene.shape.Circle;
 
 public class Game 
 {
     private GameSetup gameSetup = new GameSetup();
+
+
     //private final int numberOfBlocks = 10;
     private final Block[] blocks;
     private final Platform platform;
@@ -18,6 +21,8 @@ public class Game
     //skal fixes
     public static final int width = 600;
     public static final int height = 600;
+
+    private boolean gameStarted = false;
 
     public Game(Block[][] blocks, Platform platform, Ball ball) {
         // Initialize the game by creating an array of blocks and defining the platform and ball.
@@ -35,9 +40,78 @@ public class Game
         this.platform = platform;
         this.ball = ball;
         this.gameOver = false;
-
-        //gameLoop();
+        startGame();
     }
+
+
+    private void startGame()
+    {
+        new AnimationTimer()
+        {
+            @Override
+            public void handle(long now)
+            {
+                updateBall();
+            }
+            
+        }.start();
+    }
+
+    private void updateBall()
+    {
+        if(!gameStarted)
+        {
+            gameStarted = this.platform.firstMove();
+            this.ball.setAngle(this.platform.rightLeft());
+        }
+        else
+        {
+            this.ball.move(); 
+
+            if (CollisionHandler.checkCollision(this.ball, this.platform)) {
+                CollisionHandler.handleCollision(this.ball, this.platform);
+                System.out.println("Ball collided with platform.");
+            }
+    
+            for (Block block : this.blocks) {
+                if (CollisionHandler.checkCollision(this.ball, block) && block.exists()) {
+                    CollisionHandler.handleCollision(this.ball, block);
+                    System.out.println("Ball collided with block.");
+                }
+            }
+
+            if (this.ball.outOfBounds()) {
+                this.gameOver = true;
+            }
+    
+            // Check if all the blocks have been destroyed and end the game if they have.
+            boolean allBlocksDestroyed = true;
+            for (Block block : this.blocks) {
+                if (block.exists()) {
+                    allBlocksDestroyed = false;
+                }
+            }
+            if (allBlocksDestroyed) {
+                this.gameOver = true;
+            }
+        }
+          
+    }
+
+
+    public void firstMove()
+    {
+        gameStarted = true;
+    }
+    
+
+
+
+
+
+
+
+
 
     private void gameLoop() {
 

@@ -11,6 +11,11 @@ public class Ball extends Object2D{
 
     private Circle circle;
 
+    private double speed = 2.5;
+    private double nonSpeed = -2.5;
+    private double[] speedXY = new double[2];
+
+    private int angle;
  
 
     public Ball(int radius, int x, int y, double vx, double vy) {
@@ -24,27 +29,61 @@ public class Ball extends Object2D{
     
     }
 
+    public void move()
+    {
+       
+        this.circle.setCenterX(circle.getCenterX() + speedXY[0]);
+        this.circle.setCenterY(circle.getCenterY() +speedXY[1]);
+    }
+
+    public void setAngle(int angle)
+    {
+        this.angle = angle;
+        switch (angle) {
+            case 1:
+                speedXY[0] = speed;
+                speedXY[1] = nonSpeed;
+                break;
+            case 2:
+                speedXY[0] = speed;
+                speedXY[1] = speed;
+                break;
+            case 3:
+                speedXY[0] = nonSpeed;
+                speedXY[1] = speed;
+                break;
+            case 4:
+                speedXY[0] = nonSpeed;
+                speedXY[1] = nonSpeed;
     
+            default:
+                break;
+        }
+    }
 
     public void draw() {        
         
         
         
 
-        changedDirX = false;
-        changedDirY = false;
+        //changedDirX = false;
+        //changedDirY = false;
 
        
         // Move the ball by adding the velocity to the x and y coordinates.
-        this.x += this.vx;
-        this.y += this.vy;
+        //this.x += this.vx;
+        //this.y += this.vy;
+
+        
+
+        /* 
         System.out.println("vx " + this.vx + " vy " + this.vy);
         
         if (this.x == 1) {
             this.vx = this.vx < 1 ? 1 : this.vx;
             this.x = -this.x + 1;
         }
-
+    */
         
 
        // this.circle.setCenterX(this.x);

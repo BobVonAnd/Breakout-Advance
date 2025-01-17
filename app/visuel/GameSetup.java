@@ -38,7 +38,9 @@ public class GameSetup
     private int multiplayerX = 605;
     private int notSelected = 0;
 
-    private BackgroundFill backgroundFill = new BackgroundFill(Color.valueOf("#D3D3D3"), null, null);
+    private BackgroundFill backgroundFill = 
+    new BackgroundFill(Color.valueOf("#D3D3D3"), null, null);
+
     private Background background = new Background(backgroundFill);
 
     private boolean multiplayer;
@@ -112,7 +114,7 @@ public class GameSetup
         this.platform = new Platform(100, 10, 250+x, 450, gameScene);
 
         //Ball________________________________________________
-        this.ball = new Ball(6, 297 + x, 345, 0.2, 0.2);
+        this.ball = new Ball(6, 297 + x, 345, 5, 5);
         easyPane.getChildren().addAll(platform.getRectangle(), ball.getCircle());
     }
 

@@ -11,7 +11,12 @@ public class Platform extends Object2D {
 
     private EventHandler<KeyEvent> move = event -> drawHandler(event);
 
+    private boolean firstMoveMade = false;
+
     private int velocity = 0;
+
+    private int angle;
+
     private final double weight = 1.8;
     private final double topSpeed = 15.0;
     private final double friction = 0.4;
@@ -36,19 +41,34 @@ public class Platform extends Object2D {
             this.velocity += dx;
         }
     }
+    public void move(int speed)
+    {
+        this.rectangle.setX(this.x + speed);
+        this.x = this.rectangle.getX();
+    }
 
 
     public void drawHandler(KeyEvent event)
     {
         if(event.getCode() == KeyCode.LEFT)
         {
-            this.moveX(-2);
-            draw();
+            if(!firstMoveMade)
+            {
+                firstMoveMade = true;
+                angle = 4;
+            }
+            move(-5);
+            //draw();
         }
         if(event.getCode() == KeyCode.RIGHT)
         {
-            this.moveX(2);
-            draw();
+            if(!firstMoveMade)
+            {
+                firstMoveMade = true;
+                angle = 1;
+            }
+            move(5);
+            //draw();
         }
     }
 
@@ -98,5 +118,14 @@ public class Platform extends Object2D {
 
     public double getWeight() {
         return this.weight;
+    }
+
+    public boolean firstMove()
+    {
+        return firstMoveMade;
+    }
+    public int rightLeft()
+    {
+        return angle;
     }
 }
