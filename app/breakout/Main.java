@@ -41,8 +41,8 @@ public class Main extends Application
         }
         else
         {
-            mn[0] = 5;
-            mn[1] = 5; 
+            mn[0] = 4;
+            mn[1] = 7; 
         }
 
         if(!(mn[0] <= 10 && mn[0] >= 1) && !(mn[1] <= 20 && mn[1] <= 5))
@@ -64,7 +64,7 @@ public class Main extends Application
             // Initializes background music 
             mediaPlayer = new MediaPlayer(new Media(Paths.get("app/BeepBox-Song.wav").toUri().toString()));
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
-            //mediaPlayer.play();  
+            mediaPlayer.play();  
         }
     }
 

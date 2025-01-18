@@ -36,8 +36,7 @@ public class Game
         //makes blocks[][] -> blocks[]
         this.blocks = new Block[blocks.length * blocks[0].length];
 
-        System.out.println(blocks[0].length + " " + blocks.length);
-
+       
         
         if(blocks[0].length < blocks.length)
         {
@@ -153,8 +152,9 @@ public class Game
             {
                 this.ball.bounceX();
             }
-            else if(this.ball.y < 0)
+            else if(this.ball.y <= 0)
             {
+                System.out.println("hej");
                 this.ball.bounceY();
             }
 
@@ -168,7 +168,7 @@ public class Game
                 }
             }
 
-            if (this.ball.y < 0) {
+            if (this.ball.y > scene.getHeight()) {
                 this.gameOver = true;
             }
     
