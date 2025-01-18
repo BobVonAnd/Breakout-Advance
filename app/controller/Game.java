@@ -86,6 +86,16 @@ public class Game
         {
             this.ball.move(); 
 
+
+            if(this.platform.x < 0)
+            {
+                this.platform.setX(0);
+            }
+            else if(this.platform.x + this.platform.getWidth() > scene.getWidth())
+            {
+                this.platform.setX((int)(scene.getWidth() - this.platform.getWidth()));
+            }
+
             //hits gamewalls
             if(this.ball.x < 0)
             {
