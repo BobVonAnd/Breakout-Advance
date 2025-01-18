@@ -29,22 +29,60 @@ public class Game
     public Game(Block[][] blocks, Platform platform, Ball ball, Scene scene) {
 
         this.scene = scene;
-
+        
         
         // Initialize the game by creating an array of blocks and defining the platform and ball.
         
         //makes blocks[][] -> blocks[]
         this.blocks = new Block[blocks.length * blocks[0].length];
 
-       
+        System.out.println(blocks[0].length + " " + blocks.length);
 
-        for(int i = 0; i < blocks[0].length; i++)
+        
+        if(blocks[0].length < blocks.length)
         {
-            for(int j = 0; j < blocks.length; j++)
+            for(int i = 0; i < blocks[0].length; i++)
             {
-                this.blocks[i*blocks[0].length +j] = blocks[j][i];
+                for(int j = 0; j < blocks.length; j++)
+                {
+                    //System.out.println("i " + i);
+                    if(!(i == 0))
+                    {
+                        System.out.println(i*blocks[0].length + i*blocks[0].length +j);
+                        this.blocks[i*blocks[0].length + i*blocks[0].length + j] = blocks[j][i];
+                    }
+                    else
+                    {
+                        System.out.println(i*blocks[0].length +j);
+                        this.blocks[i*blocks[0].length +j] = blocks[j][i];
+                    }
+                
+                }
             }
         }
+        else
+        {
+            for(int i = 0; i < blocks.length; i++)
+            {
+                for(int j = 0; j < blocks[0].length; j++)
+                {
+                    if(!(i == 0))
+                    {
+                        System.out.println(i*blocks.length + i*blocks.length+j);
+                        this.blocks[i*blocks.length + i*blocks.length+j] = blocks[i][j];
+                    }
+                    else
+                    {
+                        System.out.println(i*blocks.length +j);
+                        this.blocks[i*blocks.length +j] = blocks[i][j];
+                    }
+                
+                }
+            }
+        }
+        
+
+
         this.platform = platform;
         this.ball = ball;
         this.gameOver = false;
