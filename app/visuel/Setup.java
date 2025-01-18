@@ -66,13 +66,13 @@ public class Setup
             public void handle(ActionEvent actionEvent)
             {
                 Stage primaryStage = Main.getFirstStage();
-                //gets mode[], Stage and boolean mutiplayer
+                //gets mode[], Stage and nm
                 option.swichScene(option.modeSelected(), primaryStage, nm);
             }
             
         });
         
-        //_____________________________________________________________________
+        //instantiate leftButton__________________________________________________________
         leftButton.setWrapText(true);
         leftButton.setPrefSize(70, 40);
         leftButton.setLayoutX(30);
@@ -88,7 +88,7 @@ public class Setup
             }
             
         });
-        //_____________________________________________________________________
+        //instantiate rightButton_________________________________________________________
         rightButton.setWrapText(true);
         rightButton.setPrefSize(70, 40);
         rightButton.setLayoutX(500);
@@ -124,7 +124,8 @@ public class Setup
         hardLabel.setVisible(false);
         hardLabel.centerShapeProperty();
         hardLabel.setFont(labelFont);
-        //________________________________
+        
+        //checkBox___________________________
         multiplayer.setLayoutX(370);
         multiplayer.setLayoutY(330);
         multiplayer.setFont(checkBoxFont);

@@ -1,7 +1,6 @@
 package app.model;
 // Purpose: This class is used to create a breakable/killable block in the game.
 
-import javafx.geometry.Bounds;
 import javafx.scene.shape.Rectangle;
 
 public class Block extends Object2D {
@@ -36,7 +35,7 @@ public class Block extends Object2D {
         return !exists;
     }
 
-    /* 
+    /* will be needed for a restart methed, but this is for Stddraw, and hasn't been updated.
     public void revive () {
         // Revive the block by setting exists to true and drawing a colored rectangle over it.
         this.exists = true;

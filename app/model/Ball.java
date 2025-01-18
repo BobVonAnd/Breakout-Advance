@@ -1,20 +1,21 @@
 package app.model;
-// Purpose: This class is used to define the ball moving around the game colliding with other objects.
-
 import app.controller.Game;
 import javafx.scene.shape.Circle;
 
 
 public class Ball extends Object2D{
-    //private double minSpeed = 0.2;
-    public boolean changedDirX, changedDirY;
+
+
+    //public boolean changedDirX, changedDirY;
 
     private Circle circle;
 
+    //speeds and xy speed
     private double speed = 2.5;
     private double nonSpeed = -2.5;
     private double[] speedXY = new double[2];
 
+    //what direction 
     private int angle;
  
 
@@ -23,12 +24,12 @@ public class Ball extends Object2D{
         super(radius, radius, x, y);
         this.vx = vx;
         this.vy = vy;
-        this.setMass(1.3);
-        this.circle = makeGetCircle();
+       
 
-    
+        this.circle = makeGetCircle();
     }
 
+    //moves ball, and update x and y
     public void move()
     {
         this.circle.setCenterX(circle.getCenterX() + speedXY[0]);
@@ -38,6 +39,7 @@ public class Ball extends Object2D{
         this.y = this.circle.getCenterY();
     }
 
+    //chances direction
     public void setAngle(int angle)
     {
         this.angle = angle;
@@ -61,48 +63,22 @@ public class Ball extends Object2D{
             default:
                 break;
         }
-    }
+    }   
 
-   
- 
-
-    public boolean outOfBounds() {
-        // Check if the ball is out of bounds.
-        return this.y < 0;
-    }
-
-    public void bounceOffWalls() {
-        // Bounce the ball off the walls by reversing the x or y velocity.
-        if (this.x <= 0 && this.vx <= 0) {
-            this.x = 1 + this.getWidth();
-            this.bounceX();
-        }
-        if (this.x >= Game.width) {
-            this.bounceX();
-            this.x = Game.width - 1 - this.getWidth();
-        }
-        if (this.y >= Game.height) {
-            this.bounceY();
-            this.y = Game.height - 1 - this.getHeight();
-        }
-    }
-
-    
-
+    //swiches x direction
     public void bounceX() {
         // Bounce the ball in the x direction by reversing the x velocity.
         
         this.speedXY[0] *= -1;
-        
-        
-        
     }
-
+ 
+    //swiches y directions
     public void bounceY() {
         // Bounce the ball in the y direction by reversing the y velocity.
         this.speedXY[1] *= -1;
     }
 
+  
     public double getVx() {
         // Return the x velocity of the ball.
         return this.vx;
@@ -122,6 +98,7 @@ public class Ball extends Object2D{
         // Set the y velocity of the ball.
         this.vy = vy;
     }
+    
 
     public void setX(int x) {
         // Set the x coordinate of the ball.

@@ -1,14 +1,10 @@
 package app.controller;
 import app.visuel.GameSetup;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Option 
 {
-
-     
-
     //indicates what mode[] is selected
     private static int whatMode = 0;
 
@@ -66,6 +62,7 @@ public class Option
             gameSceneWidth = gameSceneWidth * 2 + 5;
         }
 
+        
         GameSetup gameSetup = new GameSetup(gameSceneWidth, gameSceneHeight, multiplayerSelected, mn);
        
         //swithes scenes
@@ -85,7 +82,7 @@ public class Option
                 break;
         }
         
-        
+        //starts the game
         Game game = new Game(gameSetup.getBlocks(), gameSetup.getPlatform(), gameSetup.getBall(), primaryStage.getScene());
         
     }

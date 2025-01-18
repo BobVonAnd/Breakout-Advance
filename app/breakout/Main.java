@@ -20,7 +20,7 @@ public class Main extends Application
     private Pane startPage;
     private MediaPlayer mediaPlayer;
     
-
+    //starts javafx
     public static void main(String[] args)
     {
         launch(args);
@@ -29,33 +29,34 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        int[] mn = new int[2];
+        //gets nm form args
+        int[] nm = new int[2];
         Parameters params = getParameters();
         List<String> args = params.getRaw();
+        //checks if args has the right size og 2
         if(args.size() == 2)
         {
             for(int i = 0; i < 2; i++)
             {
-                mn[i] = Integer.parseInt(args.get(i)); 
+                nm[i] = Integer.parseInt(args.get(i)); 
             }
         }
         else
         {
-            mn[0] = 4;
-            mn[1] = 7; 
+            nm[0] = 4;
+            nm[1] = 7; 
         }
-
-        if(!(mn[0] <= 10 && mn[0] >= 1) && !(mn[1] <= 20 && mn[1] <= 5))
+        //checks if nm has the right values 
+        if(!(nm[0] <= 10 && nm[0] >= 1) && !(nm[1] <= 20 && nm[1] <= 5))
         {
             System.out.println("Error: n and m needs to be within (1-10) for n, and (5-20) for m");
         }
         else
         {
+            // Initiate the first stage with scene from setup
             firstStage = primaryStage;      
-        
-            // Initiate the first stage
             firstStage.setTitle("Breakout");
-            setup.chooseModePage(mn);
+            setup.chooseModePage(nm);
             startPage = setup.getPane();
             scene = new Scene(startPage, 600, 600);
             firstStage.setScene(scene);
