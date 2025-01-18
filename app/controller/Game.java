@@ -45,20 +45,19 @@ public class Game
             {
                 for(int j = 0; j < blocks.length; j++)
                 {
-                    //System.out.println("i " + i);
                     if(!(i == 0) && !(j == 0))
                     {
-                        System.out.println(i*blocks.length + j);
+                        //System.out.println(i*blocks.length + j);
                         this.blocks[i*blocks.length + j] = blocks[j][i];
                     }
                     else if(!(i == 0) && j == 0)
                     {
-                        System.out.println(i*blocks.length);
+                        //System.out.println(i*blocks.length);
                         this.blocks[i*blocks.length] = blocks[j][i];
                     }
                     else
                     {
-                        System.out.println(i*blocks[0].length +j);
+                        //System.out.println(i*blocks[0].length +j);
                         this.blocks[i*blocks[0].length +j] = blocks[j][i];
                     }
                 
@@ -74,19 +73,18 @@ public class Game
 
                     if(!(i == 0) && !(j == 0))
                     {
-                        System.out.println("bob");
-                        System.out.println(i*blocks[0].length + j);
+                        //System.out.println(i*blocks[0].length + j);
                         this.blocks[i*blocks[0].length + j] = blocks[i][j];
                     }
                     else if(!(i == 0) && j == 0)
                     {
-                        System.out.println("hej");
-                        System.out.println(i*blocks[0].length);
+                        
+                        //System.out.println(i*blocks[0].length);
                         this.blocks[i*blocks[0].length] = blocks[i][j];
                     }
                     else
                     {
-                        System.out.println(i*blocks[0].length +j);
+                        //System.out.println(i*blocks[0].length +j);
                         this.blocks[i*blocks[0].length +j] = blocks[i][j];
                     }
                 }

@@ -41,8 +41,8 @@ public class Main extends Application
         }
         else
         {
-            mn[0] = 9;
-            mn[1] = 4; 
+            mn[0] = 5;
+            mn[1] = 5; 
         }
 
         if(!(mn[0] <= 10 && mn[0] >= 1) && !(mn[1] <= 20 && mn[1] <= 5))
