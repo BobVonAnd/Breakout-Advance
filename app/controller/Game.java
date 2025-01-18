@@ -46,10 +46,15 @@ public class Game
                 for(int j = 0; j < blocks.length; j++)
                 {
                     //System.out.println("i " + i);
-                    if(!(i == 0))
+                    if(!(i == 0) && !(j == 0))
                     {
-                        System.out.println(i*blocks[0].length + i*blocks[0].length +j);
-                        this.blocks[i*blocks[0].length + i*blocks[0].length + j] = blocks[j][i];
+                        System.out.println(i*blocks.length + j);
+                        this.blocks[i*blocks.length + j] = blocks[j][i];
+                    }
+                    else if(!(i == 0) && j == 0)
+                    {
+                        System.out.println(i*blocks.length);
+                        this.blocks[i*blocks.length] = blocks[j][i];
                     }
                     else
                     {
@@ -66,17 +71,24 @@ public class Game
             {
                 for(int j = 0; j < blocks[0].length; j++)
                 {
-                    if(!(i == 0))
+
+                    if(!(i == 0) && !(j == 0))
                     {
-                        System.out.println(i*blocks.length + i*blocks.length+j);
-                        this.blocks[i*blocks.length + i*blocks.length+j] = blocks[i][j];
+                        System.out.println("bob");
+                        System.out.println(i*blocks[0].length + j);
+                        this.blocks[i*blocks[0].length + j] = blocks[i][j];
+                    }
+                    else if(!(i == 0) && j == 0)
+                    {
+                        System.out.println("hej");
+                        System.out.println(i*blocks[0].length);
+                        this.blocks[i*blocks[0].length] = blocks[i][j];
                     }
                     else
                     {
-                        System.out.println(i*blocks.length +j);
-                        this.blocks[i*blocks.length +j] = blocks[i][j];
+                        System.out.println(i*blocks[0].length +j);
+                        this.blocks[i*blocks[0].length +j] = blocks[i][j];
                     }
-                
                 }
             }
         }
@@ -174,8 +186,6 @@ public class Game
                 this.gameOver = true;
                
             }
-
-            
         }
           
     }
@@ -185,93 +195,5 @@ public class Game
     {
         gameStarted = true;
     }
-    
-
-
-
-
-
-
-
-
-
-    private void gameLoop() {
-
-        // Check if the user has pressed a or d and move the platform accordingly.
-        //if (StdDraw.isKeyPressed(65)) {
-        //    this.platform.moveX(-2);
-        //}
-        //if (StdDraw.isKeyPressed(68)) {
-        //    this.platform.moveX(2);
-        //}
-
-        // Check for collisions with the ball and the walls and bounce the ball.
-
-        while(true)
-        {
-            this.ball.bounceOffWalls();
-        
-            // Check for collisions with the platform and blocks and move the ball.
-            if (CollisionHandler.checkCollision(this.ball, this.platform)) {
-                CollisionHandler.handleCollision(this.ball, this.platform);
-                System.out.println("Ball collided with platform.");
-            }
-    
-            for (Block block : this.blocks) {
-                if (CollisionHandler.checkCollision(this.ball, block) && block.exists()) {
-                    CollisionHandler.handleCollision(this.ball, block);
-                    System.out.println("Ball collided with block.");
-                }
-            }
-            
-    
-            //this.ball.draw();
-    
-    
-            // Draw the platform and ball.
-            /* 
-            StdDraw.show(0);
-            StdDraw.clear(StdDraw.WHITE);
-            this.ball.draw();
-            this.platform.draw();
-            for (Block block : this.blocks) {
-                if (block.exists()) {
-                    block.draw();
-                }
-            }
-            */
-    
-            // Check if the ball is out of bounds and end the game if it is.
-            if (this.ball.outOfBounds()) {
-                this.gameOver = true;
-            }
-    
-            // Check if all the blocks have been destroyed and end the game if they have.
-            boolean allBlocksDestroyed = true;
-            for (Block block : this.blocks) {
-                if (block.exists()) {
-                    allBlocksDestroyed = false;
-                }
-            }
-            if (allBlocksDestroyed) {
-                this.gameOver = true;
-            }
-    
-            // Call the game loop again after a short delay if the game is not over.
-            
-            
-            
-
-            /* 
-            if (!this.gameOver) {
-                gameLoop();
-            }
-                */
-        }
-        
-    }
-    
-
-    
     
 }

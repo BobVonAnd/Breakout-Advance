@@ -63,34 +63,8 @@ public class Ball extends Object2D{
         }
     }
 
-    public void draw() {        
-        
-        
-        
-
-        //changedDirX = false;
-        //changedDirY = false;
-
-       
-        // Move the ball by adding the velocity to the x and y coordinates.
-        //this.x += this.vx;
-        //this.y += this.vy;
-
-        
-
-        /* 
-        System.out.println("vx " + this.vx + " vy " + this.vy);
-        
-        if (this.x == 1) {
-            this.vx = this.vx < 1 ? 1 : this.vx;
-            this.x = -this.x + 1;
-        }
-    */
-        
-
-       // this.circle.setCenterX(this.x);
-        //this.circle.setCenterY(this.y);
-    }
+   
+ 
 
     public boolean outOfBounds() {
         // Check if the ball is out of bounds.
@@ -126,10 +100,7 @@ public class Ball extends Object2D{
 
     public void bounceY() {
         // Bounce the ball in the y direction by reversing the y velocity.
-        
         this.speedXY[1] *= -1;
-        
-        
     }
 
     public double getVx() {
