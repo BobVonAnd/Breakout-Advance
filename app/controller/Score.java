@@ -1,4 +1,4 @@
-package app.model;
+package app.controller;
 public class Score {
     private int score;
 
